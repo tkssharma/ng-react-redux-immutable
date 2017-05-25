@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as Action from 'app/redux/actions';
 import { Link, browserHistory } from 'react-router';
 import { Row, Col, Spin, Alert, notification } from 'antd';
-import * as InputHelper from 'app/utils/helpers/Input';
 import config from 'app/global/config';
 
 
@@ -68,7 +67,7 @@ let LoginPage = (props) => {
 
 	const ui_logo = (
 		<div className="authlogo">
-				 
+
 				</div>
 		);
 

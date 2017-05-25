@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import * as Action from 'app/redux/actions';
 import { Link } from 'react-router';
 import { Spin, Alert, notification } from 'antd';
-import * as InputHelper from 'app/utils/helpers/Input';
 
 
 const mapStateToProps = ( state, ownProps ) => {
@@ -65,7 +64,7 @@ let ResetPasswordPage = (props) => {
 
     const ui_logo = (
 			<div className="authlogo">
-			
+
 				</div>
 		);
 
