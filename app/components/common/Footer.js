@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Col } from 'antd';
 
-
-
 const mapStateToProps = ( state, ownProps ) => {
 	return {
 	}
@@ -15,9 +13,6 @@ const mapStateToProps = ( state, ownProps ) => {
 
 const mapDispatchToProps = dispatch => ({
 });
-
-
-
 
 let WWWFooter = (props) => {
 	return (
@@ -51,7 +46,6 @@ let WWWFooter = (props) => {
                  <li><a href="">Java</a></li>
                  <li><a href="">Hadoop Big data</a></li>
                  <li><a href="">Android Development</a></li>
-
 
              </ul>
            </div>
@@ -99,6 +93,5 @@ const ConnectFooter = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(WWWFooter)
-
 
 export default ConnectFooter;

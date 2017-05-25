@@ -9,7 +9,6 @@ import { browserHistory } from 'react-router';
 import * as Action from 'app/redux/actions';
 import jwt from 'jsonwebtoken';
 
-
 function authenticatedUsersOnly( nextState, replace ) {
 	if( nextState.location.pathname != '/user/dashboard' ) {
 		if ( sessionStorage.redirect_after_login ) {
@@ -26,7 +25,6 @@ function authenticatedUsersOnly( nextState, replace ) {
 	}
 }
 
-
 function userTypeHostOnly( nextState, replace, store ) {
 	const state = store.getState();
 
@@ -39,14 +37,10 @@ function userTypeHostOnly( nextState, replace, store ) {
 
 }
 
-
-
 function authenticatedHostsOnly( nextState, replace, store ) {
 	authenticatedUsersOnly(nextState, replace);
 	userTypeHostOnly(nextState, replace, store);
 }
-
-
 
 function notLoggedIn( nextState, replace ) {
 	if ( Auth.loggedIn() ) {
@@ -57,8 +51,6 @@ function notLoggedIn( nextState, replace ) {
 	}
 }
 
-
-
 function logoutUser( nextState, replace ) {
 	Auth.logout();
 	replace({
@@ -67,10 +59,6 @@ function logoutUser( nextState, replace ) {
 	});
 
 }
-
-
-
-
 
 function loadGoogleMapsScript( nextState, replace, done ) {
 
@@ -91,22 +79,12 @@ function loadGoogleMapsScript( nextState, replace, done ) {
 
 }
 
-
-
-
-
-
-
-
-
 function userChangesEventView( nextState, replace, store ) {
 	const state = store.getState();
 	if ( state.www.get('current_booking').get('booking') === false ) {
 		store.dispatch( Action.wwwUpdateCurrentBookingField({ key: 'guests', value: 1 }) );
 	}
 }
-
-
 
 export { authenticatedUsersOnly };
 export { notLoggedIn };
@@ -116,5 +94,3 @@ export { authenticatedHostsOnly };
 
 export { loadGoogleMapsScript };
 export { userChangesEventView };
-
-

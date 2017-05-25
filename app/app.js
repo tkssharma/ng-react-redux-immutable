@@ -65,8 +65,6 @@ render((
 																				onEnter={AuthMiddleware.notLoggedIn}/>
 												</Route>
 
-
-
 												<Route path="/" component={PublicLayout}>
 																<IndexRoute component={PublicIndexPage}/>
 												</Route>
