@@ -126,6 +126,10 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
+	var _dashboardPage = __webpack_require__(615);
+
+	var _dashboardPage2 = _interopRequireDefault(_dashboardPage);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -146,6 +150,8 @@
 
 	// ------------------Login pages-------------------//
 	// ------------------Application Pages-------------//
+
+	//--------------------Dashboard------------------//
 
 
 	(0, _reactDom.render)(_react2.default.createElement(
@@ -168,6 +174,13 @@
 																	path: 'reset-password',
 																	component: _ResetPassword2.default,
 																	onEnter: AuthMiddleware.notLoggedIn })
+									),
+									_react2.default.createElement(
+													_reactRouter.Route,
+													{ path: 'user', component: _Default2.default },
+													_react2.default.createElement(_reactRouter.Route, {
+																	path: 'dashboard',
+																	component: _dashboardPage2.default })
 									),
 									_react2.default.createElement(
 													_reactRouter.Route,
@@ -28827,6 +28840,10 @@
 
 	var _UI2 = _interopRequireDefault(_UI);
 
+	var _App = __webpack_require__(616);
+
+	var _App2 = _interopRequireDefault(_App);
+
 	var _reactRouterRedux = __webpack_require__(271);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28835,6 +28852,7 @@
 	    auth: _Auth2.default,
 	    user: _User2.default,
 	    ui: _UI2.default,
+	    app: _App2.default,
 	    routing: _reactRouterRedux.routerReducer
 	});
 
@@ -68332,7 +68350,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+					value: true
 	});
 
 	var _spin = __webpack_require__(518);
@@ -68359,209 +68377,220 @@
 
 	var _reactRouter = __webpack_require__(178);
 
-	var _Input = __webpack_require__(525);
-
-	var InputHelper = _interopRequireWildcard(_Input);
-
-	var _config = __webpack_require__(526);
+	var _config = __webpack_require__(525);
 
 	var _config2 = _interopRequireDefault(_config);
+
+	var _utilHelper = __webpack_require__(526);
+
+	var _utilHelper2 = _interopRequireDefault(_utilHelper);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-		return {
-			register: state.auth.get('register')
-		};
+					return {
+									register: state.auth.get('register')
+					};
 	};
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-		return {
-			authSubmitRegisterForm: function authSubmitRegisterForm(status) {
-				return dispatch(Action.authSubmitRegisterForm(status));
-			},
-			authUpdateRegisterFormField: function authUpdateRegisterFormField(data) {
-				return dispatch(Action.authUpdateRegisterFormField(data));
-			},
-			authInvalidateRegisterForm: function authInvalidateRegisterForm(value) {
-				return dispatch(Action.authInvalidateRegisterForm(value));
-			},
-			authServerRegisterUser: function authServerRegisterUser(value) {
-				return dispatch(Action.authServerRegisterUser(value));
-			}
-		};
+					return {
+									authSubmitRegisterForm: function authSubmitRegisterForm(status) {
+													return dispatch(Action.authSubmitRegisterForm(status));
+									},
+									authUpdateRegisterFormField: function authUpdateRegisterFormField(data) {
+													return dispatch(Action.authUpdateRegisterFormField(data));
+									},
+									authInvalidateRegisterForm: function authInvalidateRegisterForm(value) {
+													return dispatch(Action.authInvalidateRegisterForm(value));
+									},
+									authServerRegisterUser: function authServerRegisterUser(value) {
+													return dispatch(Action.authServerRegisterUser(value));
+									}
+					};
 	};
 
 	var RegisterPage = function RegisterPage(props) {
 
-		// get data from state and assign 
-		// 
-		var user_name = props.register.get('name');
-		var user_email = props.register.get('email');
-		var user_phone = props.register.get('phone');
-		var user_password = props.register.get('password');
-		var user_password_confirm = props.register.get('password_confirm');
+					// get data from state and assign
+					//
+					var user_name = props.register.get('name');
+					var user_email = props.register.get('email');
+					var user_phone = props.register.get('phone');
+					var user_password = props.register.get('password');
+					var user_password_confirm = props.register.get('password_confirm');
 
-		var handleSubmit = function handleSubmit(event) {
+					var handleSubmit = function handleSubmit(event) {
 
-			event.preventDefault();
-			props.authSubmitRegisterForm(true);
+									event.preventDefault();
+									props.authSubmitRegisterForm(true);
 
-			var errorHandler = function errorHandler(message, description) {
-				setTimeout(function () {
-					_notification2.default.error({ message: message, description: description });
-					props.authInvalidateRegisterForm(true);
-					props.authSubmitRegisterForm(false);
-				}, 50);
-			};
+									var errorHandler = function errorHandler(message, description) {
+													setTimeout(function () {
+																	_notification2.default.error({ message: message, description: description });
+																	props.authInvalidateRegisterForm(true);
+																	props.authSubmitRegisterForm(false);
+													}, 50);
+									};
 
-			if (!user_name || !user_email || !user_password || !user_password_confirm) {
-				errorHandler('Error Occoured!', 'Please enter all the fields.');
-			} else if (!InputHelper.validateEmail(user_email)) {
-				errorHandler('Invalid Email', 'Please enter a valid email address.');
-			} else if (user_password != user_password_confirm) {
-				errorHandler('Password Mismatch', 'Your password and verify password is not same.');
-			} else {
-				props.authInvalidateRegisterForm(false);
-				props.authServerRegisterUser({
-					name: user_name,
-					email: user_email,
-					phone: user_phone,
-					password: user_password,
-					verify_password: user_password_confirm
-				});
-			}
-		};
+									if (!user_name || !user_email || !user_password || !user_password_confirm) {
+													errorHandler('Error Occoured!', 'Please enter all the fields.');
+									} else if (!_utilHelper2.default.validateEmail(user_email)) {
+													errorHandler('Invalid Email', 'Please enter a valid email address.');
+									} else if (user_password != user_password_confirm) {
+													errorHandler('Password Mismatch', 'Your password and verify password is not same.');
+									} else {
+													props.authInvalidateRegisterForm(false);
+													props.authServerRegisterUser({ name: user_name, email: user_email, phone: user_phone, password: user_password, verify_password: user_password_confirm });
+									}
+					};
 
-		var handleInputChange = function handleInputChange(event, field) {
-			var value = event.target.value;
-			props.authUpdateRegisterFormField({ field: field, value: value });
-		};
+					var handleInputChange = function handleInputChange(event, field) {
+									var value = event.target.value;
+									props.authUpdateRegisterFormField({ field: field, value: value });
+					};
 
-		var ui_logo = _react2.default.createElement(
-			'div',
-			{ className: 'logo' },
-			_react2.default.createElement(
-				_reactRouter.Link,
-				{ to: '/auth/login' },
-				_react2.default.createElement('img', { src: '/images/logo.png', alt: '' })
-			)
-		);
+					var ui_logo = _react2.default.createElement('div', { className: 'logo' });
 
-		var ui_links = _react2.default.createElement(
-			'div',
-			{ className: 'social' },
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.facebook, className: 'button block facebook' },
-				_react2.default.createElement('i', { className: 'fa fa-facebook-official', 'aria-hidden': 'true' }),
-				' Login with Facebook'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.google, className: 'button block google' },
-				_react2.default.createElement('i', { className: 'fa fa-google', 'aria-hidden': 'true' }),
-				' Login with Google'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.twitter, className: 'button block twitter' },
-				_react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true' }),
-				' Login with Twitter'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.instagram, className: 'button block instagram' },
-				_react2.default.createElement('i', { className: 'fa fa-instagram', 'aria-hidden': 'true' }),
-				' Login with Instagram'
-			)
-		);
+					var ui_links = _react2.default.createElement(
+									'div',
+									{ className: 'social' },
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.facebook, className: 'button block facebook' },
+													_react2.default.createElement('i', { className: 'fa fa-facebook-official', 'aria-hidden': 'true' }),
+													'Login with Facebook'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.google, className: 'button block google' },
+													_react2.default.createElement('i', { className: 'fa fa-google', 'aria-hidden': 'true' }),
+													'Login with Google'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.twitter, className: 'button block twitter' },
+													_react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true' }),
+													'Login with Twitter'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.instagram, className: 'button block instagram' },
+													_react2.default.createElement('i', { className: 'fa fa-instagram', 'aria-hidden': 'true' }),
+													'Login with Instagram'
+									)
+					);
 
-		var ui_form = _react2.default.createElement(
-			'div',
-			{ className: 'content' },
-			_react2.default.createElement(
-				'form',
-				{ onSubmit: handleSubmit },
-				_react2.default.createElement(
-					'h2',
-					null,
-					'Register new account.'
-				),
-				props.register.get('error') && _react2.default.createElement(_alert2.default, { message: 'Place enter all the fields with valid information.', type: 'error' }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'text', placeholder: 'full name', autoFocus: true, defaultValue: user_name, onChange: function onChange(e) {
-							handleInputChange(e, 'name');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'text', placeholder: 'email address', defaultValue: user_email, onChange: function onChange(e) {
-							handleInputChange(e, 'email');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'text', placeholder: 'phone number', defaultValue: user_phone, onChange: function onChange(e) {
-							handleInputChange(e, 'phone');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'password', placeholder: 'password', defaultValue: user_password, onChange: function onChange(e) {
-							handleInputChange(e, 'password');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'password', placeholder: 'verify password', defaultValue: user_password_confirm, onChange: function onChange(e) {
-							handleInputChange(e, 'password_confirm');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'form-footer' },
-					_react2.default.createElement(
-						'button',
-						{ type: 'submit', className: 'ant-btn ant-btn-primary' },
-						'Register'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/auth/login' },
-						'\u2190 Back to Login Page'
-					)
-				)
-			)
-		);
+					var ui_form = _react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+													'form',
+													{ onSubmit: handleSubmit },
+													_react2.default.createElement(
+																	'h2',
+																	null,
+																	'Register new account.'
+													),
+													props.register.get('error') && _react2.default.createElement(_alert2.default, {
+																	message: 'Place enter all the fields with valid information.',
+																	type: 'error' }),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'text',
+																					placeholder: 'full name',
+																					autoFocus: true,
+																					defaultValue: user_name,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'name');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'text',
+																					placeholder: 'email address',
+																					defaultValue: user_email,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'email');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'text',
+																					placeholder: 'phone number',
+																					defaultValue: user_phone,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'phone');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'password',
+																					placeholder: 'password',
+																					defaultValue: user_password,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'password');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'password',
+																					placeholder: 'verify password',
+																					defaultValue: user_password_confirm,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'password_confirm');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'form-footer' },
+																	_react2.default.createElement(
+																					'button',
+																					{ type: 'submit', className: 'ant-btn ant-btn-primary' },
+																					'Register'
+																	),
+																	_react2.default.createElement(
+																					_reactRouter.Link,
+																					{ to: '/auth/login' },
+																					'\u2190 Back to Login Page'
+																	)
+													)
+									)
+					);
 
-		return _react2.default.createElement(
-			'div',
-			{ className: 'flex column' },
-			ui_logo,
-			_react2.default.createElement(
-				_spin2.default,
-				{ spinning: props.register.get('submit'), size: 'large' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'content-container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'flex flex--jc-sa flex--align-center' },
-						ui_form,
-						ui_links
-					)
-				)
-			)
-		);
+					return _react2.default.createElement(
+									'div',
+									{ className: 'flex column' },
+									ui_logo,
+									_react2.default.createElement(
+													_spin2.default,
+													{
+																	spinning: props.register.get('submit'),
+																	size: 'large' },
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'content-container' },
+																	_react2.default.createElement(
+																					'div',
+																					{ className: 'flex flex--jc-sa flex--align-center' },
+																					ui_form,
+																					ui_links
+																	)
+													)
+									)
+					);
 	};
 
 	var ConnectLoginPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RegisterPage);
@@ -69048,21 +69077,6 @@
 
 /***/ },
 /* 525 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.validateEmail = validateEmail;
-	function validateEmail(email) {
-		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(email);
-	}
-
-/***/ },
-/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69094,13 +69108,45 @@
 	};
 
 /***/ },
+/* 526 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Util = function () {
+	   function Util() {
+	      _classCallCheck(this, Util);
+	   }
+
+	   _createClass(Util, null, [{
+	      key: "validateEmail",
+	      value: function validateEmail(email) {
+	         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	         return re.test(email);
+	      }
+	   }]);
+
+	   return Util;
+	}();
+
+	exports.default = Util;
+
+/***/ },
 /* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+					value: true
 	});
 
 	var _spin = __webpack_require__(518);
@@ -69127,186 +69173,186 @@
 
 	var _reactRouter = __webpack_require__(178);
 
-	var _Input = __webpack_require__(525);
-
-	var InputHelper = _interopRequireWildcard(_Input);
-
-	var _config = __webpack_require__(526);
+	var _config = __webpack_require__(525);
 
 	var _config2 = _interopRequireDefault(_config);
+
+	var _utilHelper = __webpack_require__(526);
+
+	var _utilHelper2 = _interopRequireDefault(_utilHelper);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-		return {
-			status: state.auth.get('status'),
-			login: state.auth.get('login')
-		};
+					return {
+									status: state.auth.get('status'),
+									login: state.auth.get('login')
+					};
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-		return {
-			authSubmitLoginForm: function authSubmitLoginForm(status) {
-				return dispatch(Action.authSubmitLoginForm(status));
-			},
-			authInvalidateLoginForm: function authInvalidateLoginForm(value) {
-				return dispatch(Action.authInvalidateLoginForm(value));
-			},
-			authUpdateLoginFormField: function authUpdateLoginFormField(data) {
-				return dispatch(Action.authUpdateLoginFormField(data));
-			},
-			authServerLoginUser: function authServerLoginUser(value) {
-				return dispatch(Action.authServerLoginUser(value));
-			}
-		};
+					return {
+									authSubmitLoginForm: function authSubmitLoginForm(status) {
+													return dispatch(Action.authSubmitLoginForm(status));
+									},
+									authInvalidateLoginForm: function authInvalidateLoginForm(value) {
+													return dispatch(Action.authInvalidateLoginForm(value));
+									},
+									authUpdateLoginFormField: function authUpdateLoginFormField(data) {
+													return dispatch(Action.authUpdateLoginFormField(data));
+									},
+									authServerLoginUser: function authServerLoginUser(value) {
+													return dispatch(Action.authServerLoginUser(value));
+									}
+					};
 	};
 
 	var LoginPage = function LoginPage(props) {
 
-		var user_email = props.login.get('email');
-		var user_password = props.login.get('password');
+					var user_email = props.login.get('email');
+					var user_password = props.login.get('password');
 
-		var handleSubmit = function handleSubmit(event) {
-			event.preventDefault();
-			props.authSubmitLoginForm(true);
+					var handleSubmit = function handleSubmit(event) {
+									event.preventDefault();
+									props.authSubmitLoginForm(true);
 
-			var errorHandler = function errorHandler(message, description) {
-				setTimeout(function () {
-					_notification2.default.error({ message: message, description: description });
-					props.authInvalidateLoginForm(true);
-					props.authSubmitLoginForm(false);
-				}, 50);
-			};
+									var errorHandler = function errorHandler(message, description) {
+													setTimeout(function () {
+																	_notification2.default.error({ message: message, description: description });
+																	props.authInvalidateLoginForm(true);
+																	props.authSubmitLoginForm(false);
+													}, 50);
+									};
 
-			if (!user_email || !user_password) {
-				errorHandler('Error Occoured!', 'Please enter your email address and password.');
-			} else if (!InputHelper.validateEmail(user_email)) {
-				errorHandler('Invalid Email', 'Please enter a valid email address.');
-			} else {
-				props.authInvalidateLoginForm(false);
-				props.authServerLoginUser({
-					email: user_email,
-					password: user_password
-				});
-			}
-		};
+									if (!user_email || !user_password) {
+													errorHandler('Error Occoured!', 'Please enter your email address and password.');
+									} else if (!_utilHelper2.default.validateEmail(user_email)) {
+													errorHandler('Invalid Email', 'Please enter a valid email address.');
+									} else {
+													props.authInvalidateLoginForm(false);
+													props.authServerLoginUser({ email: user_email, password: user_password });
+									}
+					};
 
-		var handleInputChange = function handleInputChange(event, field) {
-			var value = event.target.value;
-			props.authUpdateLoginFormField({ field: field, value: value });
-		};
+					var handleInputChange = function handleInputChange(event, field) {
+									var value = event.target.value;
+									props.authUpdateLoginFormField({ field: field, value: value });
+					};
 
-		var ui_logo = _react2.default.createElement(
-			'div',
-			{ className: 'authlogo' },
-			_react2.default.createElement(
-				_reactRouter.Link,
-				{ to: '/auth/login' },
-				_react2.default.createElement('img', { alt: 'Logo with text', 'class': '', src: '../images/logo.png' })
-			)
-		);
+					var ui_logo = _react2.default.createElement('div', { className: 'authlogo' });
 
-		var ui_links = _react2.default.createElement(
-			'div',
-			{ className: 'social' },
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.facebook, className: 'button block facebook' },
-				_react2.default.createElement('i', { className: 'fa fa-facebook-official', 'aria-hidden': 'true' }),
-				' Login with Facebook'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.google, className: 'button block google' },
-				_react2.default.createElement('i', { className: 'fa fa-google', 'aria-hidden': 'true' }),
-				' Login with Google'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.twitter, className: 'button block twitter' },
-				_react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true' }),
-				' Login with Twitter'
-			),
-			_react2.default.createElement(
-				'a',
-				{ href: _config2.default.social.instagram, className: 'button block instagram' },
-				_react2.default.createElement('i', { className: 'fa fa-instagram', 'aria-hidden': 'true' }),
-				' Login with Instagram'
-			)
-		);
+					var ui_links = _react2.default.createElement(
+									'div',
+									{ className: 'social' },
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.facebook, className: 'button block facebook' },
+													_react2.default.createElement('i', { className: 'fa fa-facebook-official', 'aria-hidden': 'true' }),
+													'Login with Facebook'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.google, className: 'button block google' },
+													_react2.default.createElement('i', { className: 'fa fa-google', 'aria-hidden': 'true' }),
+													'Login with Google'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.twitter, className: 'button block twitter' },
+													_react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true' }),
+													'Login with Twitter'
+									),
+									_react2.default.createElement(
+													'a',
+													{ href: _config2.default.social.instagram, className: 'button block instagram' },
+													_react2.default.createElement('i', { className: 'fa fa-instagram', 'aria-hidden': 'true' }),
+													'Login with Instagram'
+									)
+					);
 
-		var ui_form = _react2.default.createElement(
-			'div',
-			{ className: 'content' },
-			_react2.default.createElement(
-				'form',
-				{ onSubmit: handleSubmit },
-				_react2.default.createElement(
-					'h2',
-					null,
-					'Login to Members Area.'
-				),
-				props.login.get('error') && _react2.default.createElement(_alert2.default, { message: 'Please enter valid email and password.', type: 'error', showIcon: true }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'text', placeholder: 'email address', autoFocus: true, defaultValue: user_email, onChange: function onChange(e) {
-							handleInputChange(e, 'email');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'password', placeholder: 'password', defaultValue: user_password, onChange: function onChange(e) {
-							handleInputChange(e, 'password');
-						} })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'form-footer' },
-					_react2.default.createElement(
-						'button',
-						{ type: 'submit', className: 'ant-btn ant-btn-primary' },
-						'Login Now'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ className: 'label-marker', to: '/auth/reset-password' },
-						'Reset password'
-					)
-				)
-			)
-		);
+					var ui_form = _react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+													'form',
+													{ onSubmit: handleSubmit },
+													_react2.default.createElement(
+																	'h2',
+																	null,
+																	'Login to Members Area.'
+													),
+													props.login.get('error') && _react2.default.createElement(_alert2.default, { message: 'Please enter valid email and password.', type: 'error', showIcon: true }),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'text',
+																					placeholder: 'email address',
+																					autoFocus: true,
+																					defaultValue: user_email,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'email');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'input' },
+																	_react2.default.createElement('input', {
+																					type: 'password',
+																					placeholder: 'password',
+																					defaultValue: user_password,
+																					onChange: function onChange(e) {
+																									handleInputChange(e, 'password');
+																					} })
+													),
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'form-footer' },
+																	_react2.default.createElement(
+																					'button',
+																					{ type: 'submit', className: 'ant-btn ant-btn-primary' },
+																					'Login Now'
+																	),
+																	_react2.default.createElement(
+																					_reactRouter.Link,
+																					{ className: 'label-marker', to: '/auth/reset-password' },
+																					'Reset password'
+																	)
+													)
+									)
+					);
 
-		return _react2.default.createElement(
-			'div',
-			{ className: 'flex column' },
-			ui_logo,
-			_react2.default.createElement(
-				_spin2.default,
-				{ spinning: props.login.get('submit'), size: 'large' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'content-container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'flex flex--jc-sa flex--align-center' },
-						ui_form,
-						ui_links
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'center m-t-20' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/auth/register', className: 'button default centered extra-padding' },
-							'Not yet a member? Register Now'
-						)
-					)
-				)
-			)
-		);
+					return _react2.default.createElement(
+									'div',
+									{ className: 'flex column' },
+									ui_logo,
+									_react2.default.createElement(
+													_spin2.default,
+													{
+																	spinning: props.login.get('submit'),
+																	size: 'large' },
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'content-container' },
+																	_react2.default.createElement(
+																					'div',
+																					{ className: 'flex flex--jc-sa flex--align-center' },
+																					ui_form,
+																					ui_links
+																	),
+																	_react2.default.createElement(
+																					'div',
+																					{ className: 'center m-t-20' },
+																					_react2.default.createElement(
+																									_reactRouter.Link,
+																									{ to: '/auth/register', className: 'button default centered extra-padding' },
+																									'Not yet a member? Register Now'
+																					)
+																	)
+													)
+									)
+					);
 	};
 
 	var ConnectLoginPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginPage);
@@ -69380,15 +69426,7 @@
 			}, 20);
 		}
 
-		var ui_logo = _react2.default.createElement(
-			'div',
-			{ className: 'authlogo' },
-			_react2.default.createElement(
-				_reactRouter.Link,
-				{ to: '/auth/login' },
-				_react2.default.createElement('img', { alt: 'Logo with text', 'class': '', src: '../images/logo.png' })
-			)
-		);
+		var ui_logo = _react2.default.createElement('div', { className: 'authlogo' });
 
 		var ui_message_logout = _react2.default.createElement(
 			'div',
@@ -69474,10 +69512,6 @@
 
 	var _reactRouter = __webpack_require__(178);
 
-	var _Input = __webpack_require__(525);
-
-	var InputHelper = _interopRequireWildcard(_Input);
-
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -69537,15 +69571,7 @@
 			props.authUpdateLoginFormField({ field: field, value: value });
 		};
 
-		var ui_logo = _react2.default.createElement(
-			'div',
-			{ className: 'authlogo' },
-			_react2.default.createElement(
-				_reactRouter.Link,
-				{ to: '/auth/login' },
-				_react2.default.createElement('img', { alt: 'Logo with text', 'class': '', src: '../images/logo.png' })
-			)
-		);
+		var ui_logo = _react2.default.createElement('div', { className: 'authlogo' });
 
 		var ui_form = _react2.default.createElement(
 			'div',
@@ -69562,9 +69588,15 @@
 				_react2.default.createElement(
 					'div',
 					{ className: 'input' },
-					_react2.default.createElement('input', { type: 'text', placeholder: 'email address', autoFocus: true, defaultValue: user_email, onChange: function onChange(e) {
+					_react2.default.createElement('input', {
+						type: 'text',
+						placeholder: 'email address',
+						autoFocus: true,
+						defaultValue: user_email,
+						onChange: function onChange(e) {
 							handleInputChange(e, 'email');
 						} }),
+					' ',
 					props.reset_password.get('done') && _react2.default.createElement(
 						'div',
 						{ className: 'm-t-20' },
@@ -69576,13 +69608,13 @@
 						_react2.default.createElement(
 							'p',
 							{ className: 'm-t-10' },
-							'You can alternatively ',
+							'You can alternatively',
 							_react2.default.createElement(
 								_reactRouter.Link,
 								{ to: '/auth/login' },
 								'login with your social profile'
 							),
-							' as well.'
+							'as well.'
 						)
 					)
 				),
@@ -69633,7 +69665,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+					value: true
 	});
 
 	var _spin = __webpack_require__(518);
@@ -69679,97 +69711,90 @@
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-		return {
-			query: ownProps.location.query
-		};
+					return { query: ownProps.location.query };
 	};
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-		return {
-			authUpdateUserData: function authUpdateUserData(data) {
-				return dispatch(Action.authUpdateUserData(data));
-			}
-		};
+					return {
+									authUpdateUserData: function authUpdateUserData(data) {
+													return dispatch(Action.authUpdateUserData(data));
+									}
+					};
 	};
 
 	var ValidateTokenPage = function ValidateTokenPage(props) {
 
-		var access_token = props.query.token;
-		console.log(access_token);
-		if (access_token) {
+					var access_token = props.query.token;
+					console.log(access_token);
+					if (access_token) {
 
-			API.setAuthToken(access_token);
-			_axios2.default.get(API.url('validate_auth')).then(function (response) {
-				if (response.data.code === 200 && response.data.message === 'success') {
-					_message2.default.success('Successfully logged in.', 3);
-					_Auth2.default.setAccessToken(access_token);
-					props.authUpdateUserData(_jsonwebtoken2.default.decode(access_token));
-					_reactRouter.browserHistory.push('/user/dashboard');
-				} else {
-					_message2.default.error('Invalid auth token, please try logging in again', 3);
-					_Auth2.default.deleteAccessToken();
-					API.setAuthToken();
-					_reactRouter.browserHistory.push('/auth/login');
-				}
-			}).catch(function (response) {
-				console.log('catch error', response);
-			});
-		}
+									API.setAuthToken(access_token);
+									_axios2.default.get(API.url('validate_auth')).then(function (response) {
+													if (response.data.code === 200 && response.data.message === 'success') {
+																	_message2.default.success('Successfully logged in.', 3);
+																	_Auth2.default.setAccessToken(access_token);
+																	props.authUpdateUserData(_jsonwebtoken2.default.decode(access_token));
+																	_reactRouter.browserHistory.push('/user/dashboard');
+													} else {
+																	_message2.default.error('Invalid auth token, please try logging in again', 3);
+																	_Auth2.default.deleteAccessToken();
+																	API.setAuthToken();
+																	_reactRouter.browserHistory.push('/auth/login');
+													}
+									}).catch(function (response) {
+													console.log('catch error', response);
+									});
+					}
 
-		var ui_logo = _react2.default.createElement(
-			'div',
-			{ className: 'authlogo' },
-			_react2.default.createElement(
-				_reactRouter.Link,
-				{ to: '/auth/login' },
-				_react2.default.createElement('img', { alt: 'Logo with text', 'class': '', src: '../images/logo.png' })
-			)
-		);
+					var ui_logo = _react2.default.createElement('div', { className: 'authlogo' });
 
-		var ui_no_access_token = _react2.default.createElement(
-			'div',
-			{ className: 'content' },
-			_react2.default.createElement(
-				'h1',
-				null,
-				'Access token not present'
-			),
-			_react2.default.createElement(
-				_reactRouter.Link,
-				_defineProperty({ className: 'label-marker', to: '/auth/login' }, 'className', 'button default inline m-t-20'),
-				'Try logging in again \u2192'
-			)
-		);
+					var ui_no_access_token = _react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+													'h1',
+													null,
+													'Access token not present'
+									),
+									_react2.default.createElement(
+													_reactRouter.Link,
+													_defineProperty({
+																	className: 'label-marker',
+																	to: '/auth/login'
+													}, 'className', 'button default inline m-t-20'),
+													'Try logging in again \u2192'
+									)
+					);
 
-		var ui_verifying = _react2.default.createElement(
-			'div',
-			{ className: 'content' },
-			_react2.default.createElement(
-				'h1',
-				null,
-				'Verifying your access token, please wait...'
-			),
-			_react2.default.createElement(
-				'div',
-				{ className: 'm-t-20 center' },
-				_react2.default.createElement(_spin2.default, { size: 'large' })
-			)
-		);
+					var ui_verifying = _react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+													'h1',
+													null,
+													'Verifying your access token, please wait...'
+									),
+									_react2.default.createElement(
+													'div',
+													{ className: 'm-t-20 center' },
+													_react2.default.createElement(_spin2.default, { size: 'large' })
+									)
+					);
 
-		return _react2.default.createElement(
-			'div',
-			{ className: 'flex column' },
-			ui_logo,
-			_react2.default.createElement(
-				'div',
-				{ className: 'content-container' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'flex flex--jc-sa flex--align-center' },
-					access_token ? ui_verifying : ui_no_access_token
-				)
-			)
-		);
+					return _react2.default.createElement(
+									'div',
+									{ className: 'flex column' },
+									ui_logo,
+									_react2.default.createElement(
+													'div',
+													{ className: 'content-container' },
+													_react2.default.createElement(
+																	'div',
+																	{ className: 'flex flex--jc-sa flex--align-center' },
+																	access_token ? ui_verifying : ui_no_access_token
+													)
+									)
+					);
 	};
 
 	var ConnectValidateTokenPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ValidateTokenPage);
@@ -74726,7 +74751,7 @@
 			_react2.default.createElement(_Header2.default, null),
 			_react2.default.createElement(
 				'div',
-				{ id: 'wrapper', className: wrapper_classes },
+				{ id: 'wrapper' },
 				_react2.default.createElement(
 					_row2.default,
 					null,
@@ -75167,6 +75192,107 @@
 	var ConnectHome = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 	exports.default = ConnectHome;
+
+/***/ },
+/* 615 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(241);
+
+	var _actions = __webpack_require__(318);
+
+	var DefaultAction = _interopRequireWildcard(_actions);
+
+	var _reactRouter = __webpack_require__(178);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+		return {};
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {};
+	};
+
+	var dashboardPage = function dashboardPage(props) {
+		return _react2.default.createElement(
+			'div',
+			{ className: '' },
+			_react2.default.createElement(
+				'h1',
+				null,
+				'Hello !! I am tarun '
+			)
+		);
+	};
+	var connectDashboardPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(dashboardPage);
+
+	exports.default = connectDashboardPage;
+
+/***/ },
+/* 616 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _constants = __webpack_require__(267);
+
+	var _immutable = __webpack_require__(268);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var application_default_data = _immutable2.default.Map({
+	    config: _immutable2.default.Map({
+	        aside: _immutable2.default.Map({
+	            visible: true
+	        }),
+	        links: _immutable2.default.Map({
+	            user: _immutable2.default.Map({
+	                dashboard: 'dashboard',
+	                account: 'account',
+	                bookings: 'Trainings',
+	                messages: 'messages'
+	            })
+	        })
+	    }),
+
+	    default: _immutable2.default.Map({
+	        name: 'GenNext Training'
+	    })
+
+	});
+
+	function app() {
+	    var app = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : application_default_data;
+	    var action = arguments[1];
+
+
+	    if (action.type === _constants.APP_CONFIG_TOGGLE_ASIDE) {
+	        return app.setIn(['config', 'aside', 'visible'], !app.get('config').get('aside').get('visible'));
+	    } else {
+	        return app;
+	    }
+	}
+	exports.default = app;
 
 /***/ }
 /******/ ]);

@@ -47,6 +47,9 @@ import PageNotFound from 'app/ui/common/EmptyComponent';
 import AppLayout from 'app/ui/layout/Default';
 import PublicLayout from 'app/ui/layout/Public';
 import PublicIndexPage from 'app/components/home/index';
+//--------------------Dashboard------------------//
+import DefaultLayout from 'app/ui/layout/Default';
+import DashboardPage from 'app/components/dashboard/dashboardPage';
 
 render((
 				<Provider store={store}>
@@ -63,6 +66,12 @@ render((
 																				path="reset-password"
 																				component={ResetPasswordPage}
 																				onEnter={AuthMiddleware.notLoggedIn}/>
+												</Route>
+
+												<Route path="user" component={DefaultLayout}>
+																<Route
+																				path="dashboard"
+																				component={DashboardPage}/>
 												</Route>
 
 												<Route path="/" component={PublicLayout}>

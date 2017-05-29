@@ -6,6 +6,7 @@ import * as Action from 'app/redux/actions';
 import {Link, browserHistory} from 'react-router';
 import {Row, Col, Spin, Alert, notification} from 'antd';
 import config from 'app/global/config';
+import Util from '../../utils/helper/utilHelper';
 
 const mapStateToProps = (state, ownProps) => {
 				return {
@@ -59,7 +60,7 @@ let RegisterPage = (props) => {
 
 								if (!user_name || !user_email || !user_password || !user_password_confirm) {
 												errorHandler('Error Occoured!', 'Please enter all the fields.')
-								} else if (!InputHelper.validateEmail(user_email)) {
+								} else if (!Util.validateEmail(user_email)) {
 												errorHandler('Invalid Email', 'Please enter a valid email address.')
 								} else if (user_password != user_password_confirm) {
 												errorHandler('Password Mismatch', 'Your password and verify password is not same.')

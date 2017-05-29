@@ -6,7 +6,6 @@ import * as DefaultAction from 'app/redux/actions';
 import { Link } from 'react-router';
 import { Spin } from 'antd';
 
-
 const mapStateToProps = ( state, ownProps ) => {
 	return {
 	}
@@ -15,21 +14,16 @@ const mapStateToProps = ( state, ownProps ) => {
 const mapDispatchToProps = dispatch => ({
 });
 
-let TrainingPage = ( props ) => {
+let dashboardPage = ( props ) => {
 	return (
 		<div className="">
-		<div>
-	   <Spin size="small" />
-		 <Spin />
-		 <Spin size="large" />
-		</div>
+  <h1>Hello !! I am tarun </h1>
 		</div>
 	)
 }
-const ConnectTrainingPage = connect(
+const connectDashboardPage = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(TrainingPage)
+)(dashboardPage)
 
-
-export default ConnectTrainingPage;
+export default connectDashboardPage;

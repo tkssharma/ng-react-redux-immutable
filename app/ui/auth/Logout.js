@@ -8,7 +8,6 @@
 	import Auth from 'app/redux/api/Auth';
 	import { message } from 'antd';
 
-
 	const mapStateToProps = ( state, ownProps ) => {
 		return {
 			user: state.auth.get('user'),
@@ -23,9 +22,6 @@
 		}
 	}
 
-
-
-
 	let LogoutPage = (props) => {
 
 		// console.log('props.user',props.user);
@@ -38,8 +34,6 @@
 				message.info('You have been successfully logged out', 3);
 			}, 20 );
 		}
-
-
 
 			const ui_logo = (
 			<div className="authlogo">
@@ -77,14 +71,9 @@
 
 	}
 
-
-
 	const ConnectLogoutPage = connect(
 		mapStateToProps,
 		mapDispatchToProps
 	)(LogoutPage)
 
-
 	export default ConnectLogoutPage;
-
-

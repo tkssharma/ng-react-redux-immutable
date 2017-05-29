@@ -6,12 +6,12 @@ import { message } from 'antd';
 import { browserHistory } from 'react-router';
 import * as Action from 'app/redux/actions';
 
-
 function loadGoogleMapsScript(nextState, replace, done) {
 
-    if (typeof google === 'object' && typeof google.maps === 'object') {
+    if (typeof   google === 'object' && typeof google.maps === 'object') {
         // maps is already loaded.
         done();
+
     } else {
         let infoMessage = message.info('Loading google maps api for location search...', 0);
         let script = document.createElement('script');
@@ -21,7 +21,7 @@ function loadGoogleMapsScript(nextState, replace, done) {
             infoMessage();
             done();
         }
-        document.head.appendChild(script);
+     document.head.appendChild(script);
     }
 }
 export { loadGoogleMapsScript };
