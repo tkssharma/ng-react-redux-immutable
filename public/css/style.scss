@@ -18,9 +18,8 @@ body {
 	font-family: $font_family_default;
 }
 
-
-
 @import "./common/flex.scss";
+@import "./common/home.scss";
 @import "./common/helper.scss";
 @import "./common/typography.scss";
 
@@ -43,6 +42,3 @@ body {
 @import "./components/all.scss";
 @import "./components/filter.scss";
 @import "./common.scss";
-@import "./ui/www.scss";
-
-

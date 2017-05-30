@@ -8,8 +8,6 @@ import * as Action from 'app/redux/actions';
 
 import Helper from 'app/global/helper';
 
-
-
 const mapStateToProps = ( state, ownProps ) => {
 	return {
 		aside: state.app.get('config').get('aside'),
@@ -22,15 +20,11 @@ const mapDispatchToProps = dispatch => ({
     appConfigToggleAside: () => dispatch( Action.appConfigToggleAside() )
 });
 
-
 let Header = ( props ) => {
 
 	const toggleNavAside = () => {
 		props.appConfigToggleAside();
 	}
-
-
-
 
 	let hostsNavigation = (
 		<Row gutter={20} className="m-t-20">
@@ -67,14 +61,7 @@ let Header = ( props ) => {
 	let user_profile = () => {
 		return (
 			<div className="dropdown">
-				<Popover
-					placement="bottomRight"
-					content={popoverContent}
-					trigger="click"
-					overlayClassName="header-popover"
-					>
-					<a className="ant-dropdown-link" href="#">{ props.user.get('name') } <Icon type="down" /></a>
-				</Popover>
+				<a className="profile" href="#">{ props.user.get('name') } <Icon type="user" /></a>
 			</div>
 		)
 	}
@@ -106,19 +93,14 @@ let Header = ( props ) => {
 				{ user_profile() }
 			</div>
 
-
 		</header>
 	);
 
 }
 
-
-
-
 const ConnectHeader = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(Header)
-
 
 export default ConnectHeader;

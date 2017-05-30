@@ -95,7 +95,7 @@ let WWWHeader = (props) => {
 
 										<ul className="nav navbar-nav navbar-right">
 												<li>
-													<Link to="/auth/login">SignIn</Link>
+													<Link  to="/auth/login">{props.user.get('name') !== undefined ? props.user.get('name') : 'Sign In'}<Icon type="user" /></Link>
 												</li>
 
 										</ul>

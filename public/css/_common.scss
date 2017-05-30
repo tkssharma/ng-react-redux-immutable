@@ -23,14 +23,6 @@ section {
     height:525px;
 }
 
-.header-video {
-    height: 500px;
-    background-image: url(http://www.vizrt.com/training/training_events/49033/Viz_University_Online_Training/alternates/w940up/Viz%20University%20Online%20Training);
-    background-repeat: no-repeat;
-    background-position: cover;
-    background-size: cover;
-}
-
 .hero__background {
   bottom: 0;
   left: 0;
@@ -279,13 +271,11 @@ video {
     src: local("Roboto"), local("Roboto-Regular"), url(http://fonts.gstatic.com/s/roboto/v15/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format("truetype");
 }
 
-
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
@@ -411,13 +401,11 @@ input {
     width: device-width;
 }
 
-
 /*!
  * Bootstrap v3.3.2 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
@@ -427,7 +415,6 @@ input {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
-
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 
@@ -916,7 +903,7 @@ footer .social-holder:after {
             &:focus,
             &:hover {
                 text-decoration: none;
-                background-color: #2980b9;
+                background-color: #1b2136;;
             }
         }
     }
@@ -1438,15 +1425,17 @@ input:focus {
 .hero {
     padding: 30px 0 60px;
     background: #B7D5E8;
+    background-image: url('../images/bg.jpg');
+		background-size: cover;
     text-align: center;
-    color: #2980B9;
+    color: #ffffff;
     .title {
-        color: #fff;
+        color: #363636;
         margin-bottom: 15px;
     }
     .subtitle {
         font-size: 28px;
-        color: #FFF;
+        color: #363636;
         line-height: 1.285em;
         max-width: 980px;
         margin-bottom: 30px;
@@ -1491,7 +1480,7 @@ footer {
     a:hover {
         color: #fff;
     }
-    background: #142C3F;
+    background: #49516F;
     padding: 55px 0;
     font-size: 16px;
     line-height: 22px;
@@ -1560,5 +1549,5 @@ footer {
 }
 
 .header {
-    background: #2980B9 !important;
+    background: #49516F !important;
 }

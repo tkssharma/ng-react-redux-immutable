@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { Button, message, Row, Col } from 'antd';
 import Header from 'app/components/user/Header';
+import Footer from 'app/components/common/Footer';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -28,6 +29,7 @@ let DefaultLayout = (props) => {
 					</Col>
 				</Row>
 			</div>
+			<Footer/>
 		</div>
 	)
 }
