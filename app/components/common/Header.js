@@ -16,21 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = dispatch => ({});
 
-let UserNavigation = (
-		<Row className="m-t-20">
-				<Link to="/auth/login" className="button block small default">Login</Link>
-				<Link to="/auth/register" className="button block small default">Register</Link>
-
-		</Row>
-);
-let TrainerNavigation = (
-		<Row className="m-t-20">
-				<Link to="/user/dashboard" className="button block small default">Dashboard</Link>
-				<Link to="/user/bookings" className="button block small default">Bookings</Link>
-				<Link to="/user/account" className="button block small default">Account</Link>
-				<Link to="/auth/logout" className="button block small default">Logout</Link>
-		</Row>
-);
 
 let WWWHeader = (props) => {
 
@@ -56,6 +41,8 @@ let WWWHeader = (props) => {
 		let user_profile = () => {
 				if (props.user && (props.user.get('userType') === 1 || props.user.get('userType') === 2)) {
 						return (
+							<ul className="nav navbar-nav navbar-right">
+							<li>
 								<div className="dropdown">
 										<Popover
 												placement="bottomRight"
@@ -68,42 +55,37 @@ let WWWHeader = (props) => {
 														<Icon type="down"/></a>
 										</Popover>
 								</div>
+								</li>
+								</ul>
 						)
 				} else {
 						return (
-								<Link to="/auth/login">SignIn</Link>
+							<ul className="nav navbar-nav navbar-right">
+							<li><a href="">Become trainer</a></li>
+							<li><Link to="/auth/login">SignIn</Link></li>
+							<li className="btn-trial"><Link to="/auth/register">Sign Up</Link></li>
+							</ul>
 						);
 				}
 
 		}
 
 		let UserNavigation = (
-				<nav role="navigation" className="navbar header-navigation-holder">
-						<div className="container">
-								<div className="navbar-header">
-										<button
-												data-target="#header-navigation"
-												data-toggle="collapse"
-												className="navbar-toggle header-navigation-toggle"
-												type="button">
-												<i className="icon-reorder"></i>
-										</button>
-										<Link to="/" href="" className="navbar-brand logo"><img alt="Logo with text" className="img-responsive" src="../images/logo.png"/></Link>
-								</div>
-
-								<div id="header-navigation" className="collapse navbar-collapse">
-
-										<ul className="nav navbar-nav navbar-right">
-												<li>
-													<Link  to="/auth/login">{props.user.get('name') !== undefined ? props.user.get('name') : 'Sign In'}<Icon type="user" /></Link>
-												</li>
-
-										</ul>
-
-								</div>
-
-						</div>
-				</nav>
+<nav className="navbar navbar-default navbar-top">
+<div className="container">
+	<div className="navbar-header">
+	<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		<span className="icon-bar"></span>
+		<span className="icon-bar"></span>
+		<span className="icon-bar"></span>
+	</button>
+	<Link className="navbar-brand" to="/">Gen<span>NextTraining</span></Link>
+	</div>
+	<div className="collapse navbar-collapse" id="myNavbar">
+    {user_profile()}
+	</div>
+</div>
+</nav>
 		);
 
 		return (

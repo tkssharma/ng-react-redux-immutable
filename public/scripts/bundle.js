@@ -69882,6 +69882,7 @@
 		var backgroundChoices = ['default', 'royal', 'kitchen', 'veggie', 'chicken'];
 
 		var background_image = void 0;
+		delete localStorage.auth_background;
 		if (!localStorage.auth_background) {
 			background_image = backgroundChoices[Math.floor(Math.random() * backgroundChoices.length)];
 			localStorage.auth_background = background_image;
@@ -69891,14 +69892,22 @@
 
 		return _react2.default.createElement(
 			'div',
-			{ className: 'auth-container ' + background_image },
+			null,
 			_react2.default.createElement(
 				'div',
 				{ className: 'header' },
 				_react2.default.createElement(_Header2.default, null)
 			),
-			props.children,
-			_react2.default.createElement(_Footer2.default, null)
+			_react2.default.createElement(
+				'div',
+				{ className: 'auth-container ' + background_image },
+				props.children
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'footer' },
+				_react2.default.createElement(_Footer2.default, null)
+			)
 		);
 	};
 
@@ -69921,10 +69930,6 @@
 	var _icon = __webpack_require__(317);
 
 	var _icon2 = _interopRequireDefault(_icon);
-
-	var _row = __webpack_require__(604);
-
-	var _row2 = _interopRequireDefault(_row);
 
 	var _react = __webpack_require__(1);
 
@@ -69955,45 +69960,6 @@
 			return {};
 	};
 
-	var UserNavigation = _react2.default.createElement(
-			_row2.default,
-			{ className: 'm-t-20' },
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/auth/login', className: 'button block small default' },
-					'Login'
-			),
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/auth/register', className: 'button block small default' },
-					'Register'
-			)
-	);
-	var TrainerNavigation = _react2.default.createElement(
-			_row2.default,
-			{ className: 'm-t-20' },
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/user/dashboard', className: 'button block small default' },
-					'Dashboard'
-			),
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/user/bookings', className: 'button block small default' },
-					'Bookings'
-			),
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/user/account', className: 'button block small default' },
-					'Account'
-			),
-			_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/auth/logout', className: 'button block small default' },
-					'Logout'
-			)
-	);
-
 	var WWWHeader = function WWWHeader(props) {
 
 			var popoverContent = _react2.default.createElement(
@@ -70011,35 +69977,69 @@
 			var user_profile = function user_profile() {
 					if (props.user && (props.user.get('userType') === 1 || props.user.get('userType') === 2)) {
 							return _react2.default.createElement(
-									'div',
-									{ className: 'dropdown' },
+									'ul',
+									{ className: 'nav navbar-nav navbar-right' },
 									_react2.default.createElement(
-											_popover2.default,
-											{
-													placement: 'bottomRight',
-													content: popoverContent,
-													trigger: 'click',
-													overlayClassName: 'header-popover' },
+											'li',
+											null,
 											_react2.default.createElement(
-													'a',
-													{ className: 'ant-dropdown-link', href: '#' },
-													props.user.get('name'),
-													_react2.default.createElement(_icon2.default, { type: 'down' })
+													'div',
+													{ className: 'dropdown' },
+													_react2.default.createElement(
+															_popover2.default,
+															{
+																	placement: 'bottomRight',
+																	content: popoverContent,
+																	trigger: 'click',
+																	overlayClassName: 'header-popover' },
+															_react2.default.createElement(
+																	'a',
+																	{ className: 'ant-dropdown-link', href: '#' },
+																	props.user.get('name'),
+																	_react2.default.createElement(_icon2.default, { type: 'down' })
+															)
+													)
 											)
 									)
 							);
 					} else {
 							return _react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/auth/login' },
-									'SignIn'
+									'ul',
+									{ className: 'nav navbar-nav navbar-right' },
+									_react2.default.createElement(
+											'li',
+											null,
+											_react2.default.createElement(
+													'a',
+													{ href: '' },
+													'Become trainer'
+											)
+									),
+									_react2.default.createElement(
+											'li',
+											null,
+											_react2.default.createElement(
+													_reactRouter.Link,
+													{ to: '/auth/login' },
+													'SignIn'
+											)
+									),
+									_react2.default.createElement(
+											'li',
+											{ className: 'btn-trial' },
+											_react2.default.createElement(
+													_reactRouter.Link,
+													{ to: '/auth/register' },
+													'Sign Up'
+											)
+									)
 							);
 					}
 			};
 
 			var UserNavigation = _react2.default.createElement(
 					'nav',
-					{ role: 'navigation', className: 'navbar header-navigation-holder' },
+					{ className: 'navbar navbar-default navbar-top' },
 					_react2.default.createElement(
 							'div',
 							{ className: 'container' },
@@ -70048,36 +70048,26 @@
 									{ className: 'navbar-header' },
 									_react2.default.createElement(
 											'button',
-											{
-													'data-target': '#header-navigation',
-													'data-toggle': 'collapse',
-													className: 'navbar-toggle header-navigation-toggle',
-													type: 'button' },
-											_react2.default.createElement('i', { className: 'icon-reorder' })
+											{ type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#myNavbar' },
+											_react2.default.createElement('span', { className: 'icon-bar' }),
+											_react2.default.createElement('span', { className: 'icon-bar' }),
+											_react2.default.createElement('span', { className: 'icon-bar' })
 									),
 									_react2.default.createElement(
 											_reactRouter.Link,
-											{ to: '/', href: '', className: 'navbar-brand logo' },
-											_react2.default.createElement('img', { alt: 'Logo with text', className: 'img-responsive', src: '../images/logo.png' })
+											{ className: 'navbar-brand', to: '/' },
+											'Gen',
+											_react2.default.createElement(
+													'span',
+													null,
+													'NextTraining'
+											)
 									)
 							),
 							_react2.default.createElement(
 									'div',
-									{ id: 'header-navigation', className: 'collapse navbar-collapse' },
-									_react2.default.createElement(
-											'ul',
-											{ className: 'nav navbar-nav navbar-right' },
-											_react2.default.createElement(
-													'li',
-													null,
-													_react2.default.createElement(
-															_reactRouter.Link,
-															{ to: '/auth/login' },
-															props.user.get('name') !== undefined ? props.user.get('name') : 'Sign In',
-															_react2.default.createElement(_icon2.default, { type: 'user' })
-													)
-											)
-									)
+									{ className: 'collapse navbar-collapse', id: 'myNavbar' },
+									user_profile()
 							)
 					)
 			);
@@ -74683,8 +74673,7 @@
 	            _react2.default.createElement(
 	              'form',
 	              { id: 'search-form-footer', className: 'ng-pristine ng-valid' },
-	              _react2.default.createElement('input', { type: 'text', id: 'st-search-input-footer', className: 'form-control input-search' }),
-	              _react2.default.createElement('button', { type: 'submit', className: 'btn-submit icon-search' })
+	              _react2.default.createElement('input', { type: 'text', id: 'st-search-input-footer', className: 'form-control input-search' })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -75074,8 +75063,6 @@
 	  value: true
 	});
 
-	var _React$createElement;
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -75092,9 +75079,27 @@
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _organisation = __webpack_require__(619);
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	var _organisation2 = _interopRequireDefault(_organisation);
+
+	var _technologies = __webpack_require__(617);
+
+	var _technologies2 = _interopRequireDefault(_technologies);
+
+	var _courses = __webpack_require__(618);
+
+	var _courses2 = _interopRequireDefault(_courses);
+
+	var _memebers = __webpack_require__(620);
+
+	var _memebers2 = _interopRequireDefault(_memebers);
+
+	var _workshop = __webpack_require__(621);
+
+	var _workshop2 = _interopRequireDefault(_workshop);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  return {
@@ -75167,48 +75172,74 @@
 	  )
 	);
 
-	var Video_section = _react2.default.createElement(
-	  'section',
-	  { className: 'hero ng-scope' },
+	var banner_section = _react2.default.createElement(
+	  'div',
+	  { className: 'banner' },
 	  _react2.default.createElement(
 	    'div',
-	    { className: 'hero__background' },
+	    { className: 'bg-color' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'header-video' },
-	      _react2.default.createElement('img', { src: '', className: 'header-video__media ', 'data-video-url': 'https://www.youtube.com/embed/Scxs7L0vhZ4', 'data-teaser': 'video/teaser-video', 'data-video-width': '560', 'data-video-height': '315' }),
-	      _react2.default.createElement(
-	        'video',
-	        (_React$createElement = { autoplay: 'true' }, _defineProperty(_React$createElement, 'autoplay', true), _defineProperty(_React$createElement, 'loop', 'true'), _defineProperty(_React$createElement, 'muted', ''), _defineProperty(_React$createElement, 'id', 'header-video__teaser-video'), _defineProperty(_React$createElement, 'className', 'header-video__teaser-video'), _React$createElement),
-	        _react2.default.createElement('source', { src: 'https://s3.eu-central-1.amazonaws.com/ngnl/videos/ng-nl.mp4', type: 'video/mp4' }),
-	        _react2.default.createElement('source', { src: 'https://s3.eu-central-1.amazonaws.com/ngnl/videos/ng-nl.oggtheora.ogv', type: 'video/mp4' })
-	      )
-	    )
-	  ),
-	  _react2.default.createElement(
-	    'div',
-	    { className: 'hero__content page-container page-container-full text-center' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'va-container va-container-v va-container-h' },
+	      { className: 'container' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'va-middle' },
-	        _react2.default.createElement('div', { className: 'visible-lg  visible-md', id: 'logo' }),
-	        _react2.default.createElement(
-	          'h1',
-	          { className: 'text-bold-heading text-branding text-jumbo text-contrast space-1' },
-	          'Lean how to Code'
-	        ),
+	        { className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'h4 text-contrast space-4' },
-	          'Learn different technologies'
-	        ),
-	        _react2.default.createElement(
-	          'a',
-	          { href: '', 'data-dismiss': 'modal', 'data-toggle': 'modal', 'data-target': '#infoModal', className: 'btn btn-primary' },
-	          ' How It Works'
+	          { className: 'banner-text text-center' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'logo-holder' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/auth/login' },
+	              _react2.default.createElement('img', { alt: 'Tech logo angular', src: 'img/angular.svg' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/auth/login' },
+	              _react2.default.createElement('img', { alt: 'React', src: 'img/react.svg' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/auth/login' },
+	              _react2.default.createElement('img', { alt: 'Js', src: 'img/javascript.svg' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/auth/login' },
+	              _react2.default.createElement('img', { alt: 'Tech logo d3', src: 'img/d3.svg' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/auth/login' },
+	              _react2.default.createElement('img', { alt: 'Es6', src: 'img/jss.svg' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'mega title' },
+	            'GenNext Training to deliver project based learning to give you the head start you need as a developer'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'intro-para text-center quote' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'big-text' },
+	              'Learning Today . . . Leading Tomorrow.'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'small-text' },
+	              'Learn by coding'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#.', className: 'btn' },
+	              'Start Learning'
+	            )
+	          )
 	        )
 	      )
 	    )
@@ -75225,7 +75256,11 @@
 	      { className: 'header' },
 	      _react2.default.createElement(_Header2.default, null)
 	    ),
-	    Header_section,
+	    banner_section,
+	    _organisation2.default,
+	    _workshop2.default,
+	    _technologies2.default,
+	    _courses2.default,
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'footer' },
@@ -75286,6 +75321,697 @@
 	var connectDashboardPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(dashboardPage);
 
 	exports.default = connectDashboardPage;
+
+/***/ },
+/* 617 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var technologiesSection = _react2.default.createElement(
+	  "section",
+	  { id: "organisations", className: "section-padding" },
+	  _react2.default.createElement(
+	    "div",
+	    { className: "container" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "row" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-md-6" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-lg-4 col-md-4 col-sm-4 col-xs-4" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "orga-stru" },
+	            _react2.default.createElement(
+	              "h3",
+	              null,
+	              "65%"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Say NO!!"
+	            ),
+	            _react2.default.createElement("i", { className: "fa fa-male" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-lg-4 col-md-4 col-sm-4 col-xs-4" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "orga-stru" },
+	            _react2.default.createElement(
+	              "h3",
+	              null,
+	              "20%"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Says Yes!!"
+	            ),
+	            _react2.default.createElement("i", { className: "fa fa-male" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-lg-4 col-md-4 col-sm-4 col-xs-4" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "orga-stru" },
+	            _react2.default.createElement(
+	              "h3",
+	              null,
+	              "15%"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Can"
+	            ),
+	            _react2.default.createElement("i", { className: "fa fa-male" })
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-md-6" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "detail-info" },
+	          _react2.default.createElement(
+	            "hgroup",
+	            null,
+	            _react2.default.createElement(
+	              "h3",
+	              { className: "det-txt" },
+	              " Is inclusive quality education affordable?"
+	            ),
+	            _react2.default.createElement(
+	              "h4",
+	              { className: "sm-txt" },
+	              "(Revised and Updated for 2016)"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { className: "det-p" },
+	            "Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum."
+	          )
+	        )
+	      )
+	    )
+	  )
+	);
+
+	exports.default = technologiesSection;
+
+/***/ },
+/* 618 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var courseSection = _react2.default.createElement(
+	  "div",
+	  null,
+	  _react2.default.createElement(
+	    "section",
+	    { id: "testimonial", className: "section-padding" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "container" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "row" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "header-section text-center" },
+	          _react2.default.createElement(
+	            "h2",
+	            { className: "white" },
+	            "See What Our Customer Are Saying?"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { className: "white" },
+	            "Lorem ipsum dolor sit amet, consectetur adipisicing "
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-6 col-sm-6" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "text-comment" },
+	            _react2.default.createElement(
+	              "p",
+	              { className: "text-par" },
+	              "\"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem\""
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              { className: "text-name" },
+	              "Abraham Doe - Creative D\u0131rector"
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-6 col-sm-6" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "text-comment" },
+	            _react2.default.createElement(
+	              "p",
+	              { className: "text-par" },
+	              "\"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem\""
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              { className: "text-name" },
+	              "Abraham Doe - Creative D\u0131rector"
+	            )
+	          )
+	        )
+	      )
+	    )
+	  ),
+	  _react2.default.createElement(
+	    "section",
+	    { id: "courses", className: "section-padding" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "container" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "row" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "header-section text-center" },
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Courses"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Lorem ipsum "
+	          )
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "container" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "row" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course01.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course02.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course03.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course04.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course05.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          _react2.default.createElement(
+	            "figure",
+	            { className: "imghvr-fold-up" },
+	            _react2.default.createElement("img", { src: "img/course06.jpg", className: "img-responsive" }),
+	            _react2.default.createElement("a", { href: "#" })
+	          )
+	        )
+	      )
+	    )
+	  )
+	);
+
+	exports.default = courseSection;
+
+/***/ },
+/* 619 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var organisationSection = _react2.default.createElement(
+	  "section",
+	  { id: "feature", className: "section-padding" },
+	  _react2.default.createElement(
+	    "div",
+	    { className: "container" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "row" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "header-section text-center" },
+	        _react2.default.createElement(
+	          "h2",
+	          null,
+	          "Features"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "hello"
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "feature-info" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "fea" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-4" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "heading pull-right" },
+	              _react2.default.createElement(
+	                "h4",
+	                null,
+	                "Latest Technologies"
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum."
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "fea-img pull-left" },
+	              _react2.default.createElement("i", { className: "fa fa-css3" })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "fea" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-4" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "heading pull-right" },
+	              _react2.default.createElement(
+	                "h4",
+	                null,
+	                "Toons Background"
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum."
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "fea-img pull-left" },
+	              _react2.default.createElement("i", { className: "fa fa-drupal" })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "fea" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-4" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "heading pull-right" },
+	              _react2.default.createElement(
+	                "h4",
+	                null,
+	                "Award Winning Design"
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas sollicitudin metus non urna in eros tincidunt convallis id id nisi in interdum."
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "fea-img pull-left" },
+	              _react2.default.createElement("i", { className: "fa fa-trophy" })
+	            )
+	          )
+	        )
+	      )
+	    )
+	  )
+	);
+
+	exports.default = organisationSection;
+
+/***/ },
+/* 620 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var memeberSection = _react2.default.createElement(
+		"section",
+		{ id: "faculity-member", className: "section-padding" },
+		_react2.default.createElement(
+			"div",
+			{ className: "container" },
+			_react2.default.createElement(
+				"div",
+				{ className: "row" },
+				_react2.default.createElement(
+					"div",
+					{ className: "header-section text-center" },
+					_react2.default.createElement(
+						"h2",
+						null,
+						"Meet Our Faculty Member"
+					),
+					_react2.default.createElement(
+						"p",
+						null,
+						"hello"
+					)
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "col-lg-4 col-md-4 col-sm-4" },
+					_react2.default.createElement(
+						"div",
+						{ className: "pm-staff-profile-container" },
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-image-wrapper text-center" },
+							_react2.default.createElement(
+								"div",
+								{ className: "pm-staff-profile-image" },
+								_react2.default.createElement("img", { src: "img/mentor.jpg", alt: "", className: "img-thumbnail img-circle" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-details text-center" },
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-name" },
+								"Bryan Johnson"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-title" },
+								"Lead Software Engineer"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-bio" },
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. "
+							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "col-lg-4 col-md-4 col-sm-4" },
+					_react2.default.createElement(
+						"div",
+						{ className: "pm-staff-profile-container" },
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-image-wrapper text-center" },
+							_react2.default.createElement(
+								"div",
+								{ className: "pm-staff-profile-image" },
+								_react2.default.createElement("img", { src: "img/mentor.jpg", alt: "", className: "img-thumbnail img-circle" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-details text-center" },
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-name" },
+								"Bryan Johnson"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-title" },
+								"Lead Software Engineer"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-bio" },
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. "
+							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "col-lg-4 col-md-4 col-sm-4" },
+					_react2.default.createElement(
+						"div",
+						{ className: "pm-staff-profile-container" },
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-image-wrapper text-center" },
+							_react2.default.createElement(
+								"div",
+								{ className: "pm-staff-profile-image" },
+								_react2.default.createElement("img", { src: "img/mentor.jpg", alt: "", className: "img-thumbnail img-circle" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "pm-staff-profile-details text-center" },
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-name" },
+								"Bryan Johnson"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-title" },
+								"Lead Software Engineer"
+							),
+							_react2.default.createElement(
+								"p",
+								{ className: "pm-staff-profile-bio" },
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et placerat dui. In posuere metus et elit placerat tristique. Maecenas eu est in sem ullamcorper tincidunt. "
+							)
+						)
+					)
+				)
+			)
+		)
+	);
+
+	exports.default = memeberSection;
+
+/***/ },
+/* 621 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var workshopSection = _react2.default.createElement(
+	  "section",
+	  { id: "work-shop", className: "section-padding" },
+	  _react2.default.createElement(
+	    "div",
+	    { className: "container" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "row" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "header-section text-center" },
+	        _react2.default.createElement(
+	          "h2",
+	          null,
+	          "Upcoming Workshop"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "workshop"
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-md-4 col-sm-6" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "service-box text-center" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-box" },
+	            _react2.default.createElement("i", { className: "fa fa-html5 color-green" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-text" },
+	            _react2.default.createElement(
+	              "h4",
+	              { className: "ser-text" },
+	              "Mentor HTML5 Workshop"
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-md-4 col-sm-6" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "service-box text-center" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-box" },
+	            _react2.default.createElement("i", { className: "fa fa-css3 color-green" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-text" },
+	            _react2.default.createElement(
+	              "h4",
+	              { className: "ser-text" },
+	              "Mentor CSS3 Workshop"
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "col-md-4 col-sm-6" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "service-box text-center" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-box" },
+	            _react2.default.createElement("i", { className: "fa fa-joomla color-green" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "icon-text" },
+	            _react2.default.createElement(
+	              "h4",
+	              { className: "ser-text" },
+	              "Mentor Joomla Workshop"
+	            )
+	          )
+	        )
+	      )
+	    )
+	  )
+	);
+	exports.default = workshopSection;
 
 /***/ }
 /******/ ]);

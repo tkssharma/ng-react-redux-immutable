@@ -72,7 +72,6 @@ let WWWFooter = (props) => {
          <div className="search-field-holder collapsed">
            <form id="search-form-footer" className="ng-pristine ng-valid">
              <input type="text" id="st-search-input-footer" className="form-control input-search"/>
-             <button type="submit" className="btn-submit icon-search"></button>
            </form>
 
          </div>
