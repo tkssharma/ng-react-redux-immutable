@@ -4,8 +4,8 @@ let organisationSection = (    <section id ="feature" className="section-padding
       <div className="container">
         <div className="row">
           <div className="header-section text-center">
-            <h2>Features</h2>
-            <p>hello</p>
+            <h2>Learn New Technologies</h2>
+            <p>tech.geeks</p>
           </div>
           <div className="feature-info">
             <div className="fea">

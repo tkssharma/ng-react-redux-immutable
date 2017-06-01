@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = dispatch => ({});
 
-
 let WWWHeader = (props) => {
 
 		const popoverContent = (
@@ -41,22 +40,11 @@ let WWWHeader = (props) => {
 		let user_profile = () => {
 				if (props.user && (props.user.get('userType') === 1 || props.user.get('userType') === 2)) {
 						return (
-							<ul className="nav navbar-nav navbar-right">
-							<li>
-								<div className="dropdown">
-										<Popover
-												placement="bottomRight"
-												content={popoverContent}
-												trigger="click"
-												overlayClassName="header-popover">
-												<a className="ant-dropdown-link" href="#">{props
-																.user
-																.get('name')}
-														<Icon type="down"/></a>
-										</Popover>
-								</div>
-								</li>
-								</ul>
+				  <ul className="nav navbar-nav navbar-right">
+							<li><a href="">Become Trainer</a></li>
+							<li className="btn-trial"><Link to="/auth/login">{ props.user.get('name') } </Link></li>
+							</ul>
+
 						)
 				} else {
 						return (

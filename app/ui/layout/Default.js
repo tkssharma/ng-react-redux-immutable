@@ -20,16 +20,15 @@ let DefaultLayout = (props) => {
 
 	return (
 		<div>
-			<Header />
+			<div className="header">
+              <Header/>
+            </div>
 
-			<div id="wrapper">
-				<Row>
-					<Col span={22} offset={1}>
-						{props.children}
-					</Col>
-				</Row>
-			</div>
-			<Footer/>
+			{props.children}
+
+			 <div className="footer">
+                <Footer/>
+            </div>
 		</div>
 	)
 }

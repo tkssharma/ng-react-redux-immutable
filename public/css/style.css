@@ -432,7 +432,7 @@ Navigation bar
 		/* text-transform: uppercase; */
 		padding: 0px;
 		height: inherit;
-		font-size: 36px;
+		font-size: 24px;
 		margin: 20px 0px;
 }
 
@@ -460,6 +460,12 @@ Banner
 		background-size: cover;
 		min-height: 580px;
 		position: relative;
+}
+.banner2 {
+    background: url(../img/banner2.jpg) no-repeat center top;
+    background-size: cover;
+    min-height: 580px;
+    position: relative;
 }
 
 .bg-color {
@@ -624,9 +630,12 @@ Banner
 		margin-top: 10px;
 }
 
+.btn-spacing {
+	margin-right: 15px;
+}
 .quote .btn:hover,
 .quote .btn:focus {
-		background-color: #fff;
+		background-color: rgba(95, 207, 128, 0.6);
 		color: #5fcf80;
 		border-color: #fff;
 		-webkit-transition: all 0.3s ease-in-out;
@@ -1501,4 +1510,74 @@ Responsive media queries
 		background: #b0b7a9;
 		cursor: not-allowed;
 		pointer-events: none;
-}	}
+}
+
+/*  bhoechie tab */
+div.bhoechie-tab-container{
+  z-index: 10;
+  background-color: transparent;
+  padding: 0 !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  border:1px solid #ddd;
+  margin-top: 20px;
+  margin-left: 50px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+div.bhoechie-tab-menu{
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a .glyphicon,
+div.bhoechie-tab-menu div.list-group>a .fa {
+  color: #5A55A3;
+}
+div.bhoechie-tab-menu div.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a.active,
+div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu div.list-group>a.active .fa{
+  background-color: #5A55A3;
+  background-image: #5A55A3;
+  color: #ffffff;
+}
+div.bhoechie-tab-menu div.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #5A55A3;
+}
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  /* border: 1px solid #eeeeee; */
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}
