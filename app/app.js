@@ -74,6 +74,12 @@ render((
 																				component={DashboardPage}/>
 												</Route>
 
+           <Route path="admin" component={DefaultLayout}>
+																<Route
+																				path="admin"
+																				component={AdminPage}/>
+												</Route>
+
 												<Route path="/" component={PublicLayout}>
 																<IndexRoute component={PublicIndexPage}/>
 												</Route>
