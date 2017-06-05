@@ -3,12 +3,12 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {
-				Router,
-				Redirect,
-				Route,
-				Link,
-				browserHistory,
-				IndexRoute
+	Router,
+	Redirect,
+	Route,
+	Link,
+	browserHistory,
+	IndexRoute
 } from 'react-router';
 
 import {Provider} from 'react-redux';
@@ -25,13 +25,13 @@ import * as Action from 'app/redux/actions';
 import jwt from 'jsonwebtoken';
 
 if (localStorage.token) {
-				API.setAuthToken(localStorage.token);
-				store.dispatch(Action.authUpdateUserData(jwt.decode(localStorage.token)));
+	API.setAuthToken(localStorage.token);
+	store.dispatch(Action.authUpdateUserData(jwt.decode(localStorage.token)));
 }
 if (localStorage.geo) {
-				let geo = JSON.parse(localStorage.geo);
-				API.setGeoLocation(geo);
-				store.dispatch(Action.wwwSetGeo(geo));
+	// let geo = JSON.parse(localStorage.geo);
+	// API.setGeoLocation(geo);
+	//	store.dispatch(Action.wwwSetGeo(geo));
 }
 
 //---------------Login pages -----------------------//
@@ -52,37 +52,31 @@ import DefaultLayout from 'app/ui/layout/Default';
 import DashboardPage from 'app/components/dashboard/dashboardPage';
 
 render((
-				<Provider store={store}>
-								<Router history={history}>
-												<Route path="auth" component={AuthLayout}>
-																<Route
-																				path="register"
-																				component={RegisterPage}
-																				onEnter={AuthMiddleware.notLoggedIn}/>
-																<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
-																<Route path="logout" component={LogoutPage}/>
-																<Route path="validate-token" component={ValidateTokenPage}/>
-																<Route
-																				path="reset-password"
-																				component={ResetPasswordPage}
-																				onEnter={AuthMiddleware.notLoggedIn}/>
-												</Route>
+	<Provider store={store}>
+	<Router history={history}>
+	<Route path="auth" component={AuthLayout}>
+	<Route
+	path="register"
+	component={RegisterPage}
+	onEnter={AuthMiddleware.notLoggedIn}/>
+	<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
+	<Route path="logout" component={LogoutPage}/>
+	<Route path="validate-token" component={ValidateTokenPage}/>
+	<Route
+	path="reset-password"
+	component={ResetPasswordPage}
+	onEnter={AuthMiddleware.notLoggedIn}/>
+	</Route>
 
-												<Route path="user" component={DefaultLayout}>
-																<Route
-																				path="dashboard"
-																				component={DashboardPage}/>
-												</Route>
+	<Route path="user" component={DefaultLayout}>
+	<Route
+	path="dashboard"
+	component={DashboardPage}/>
+	</Route>
 
-           <Route path="admin" component={DefaultLayout}>
-																<Route
-																				path="admin"
-																				component={AdminPage}/>
-												</Route>
-
-												<Route path="/" component={PublicLayout}>
-																<IndexRoute component={PublicIndexPage}/>
-												</Route>
-								</Router>
-				</Provider>
+	<Route path="/" component={PublicLayout}>
+	<IndexRoute component={PublicIndexPage}/>
+	</Route>
+	</Router>
+	</Provider>
 ), document.getElementById('root'));

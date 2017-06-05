@@ -118,15 +118,15 @@
 
 	var _Default2 = _interopRequireDefault(_Default);
 
-	var _Public = __webpack_require__(544);
+	var _Public = __webpack_require__(543);
 
 	var _Public2 = _interopRequireDefault(_Public);
 
-	var _index = __webpack_require__(545);
+	var _index = __webpack_require__(544);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _dashboardPage = __webpack_require__(551);
+	var _dashboardPage = __webpack_require__(550);
 
 	var _dashboardPage2 = _interopRequireDefault(_dashboardPage);
 
@@ -137,14 +137,14 @@
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, _stores2.default);
 
 	if (localStorage.token) {
-					API.setAuthToken(localStorage.token);
-					_stores2.default.dispatch(Action.authUpdateUserData(_jsonwebtoken2.default.decode(localStorage.token)));
+		API.setAuthToken(localStorage.token);
+		_stores2.default.dispatch(Action.authUpdateUserData(_jsonwebtoken2.default.decode(localStorage.token)));
 	}
-	if (localStorage.geo) {
-					var geo = JSON.parse(localStorage.geo);
-					API.setGeoLocation(geo);
-					_stores2.default.dispatch(Action.wwwSetGeo(geo));
-	}
+	if (localStorage.geo) {}
+	// let geo = JSON.parse(localStorage.geo);
+	// API.setGeoLocation(geo);
+	//	store.dispatch(Action.wwwSetGeo(geo));
+
 
 	//---------------Login pages -----------------------//
 
@@ -155,39 +155,39 @@
 
 
 	(0, _reactDom.render)(_react2.default.createElement(
-					_reactRedux.Provider,
-					{ store: _stores2.default },
-					_react2.default.createElement(
-									_reactRouter.Router,
-									{ history: history },
-									_react2.default.createElement(
-													_reactRouter.Route,
-													{ path: 'auth', component: _Auth2.default },
-													_react2.default.createElement(_reactRouter.Route, {
-																	path: 'register',
-																	component: _Register2.default,
-																	onEnter: AuthMiddleware.notLoggedIn }),
-													_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default, onEnter: AuthMiddleware.notLoggedIn }),
-													_react2.default.createElement(_reactRouter.Route, { path: 'logout', component: _Logout2.default }),
-													_react2.default.createElement(_reactRouter.Route, { path: 'validate-token', component: _ValidateToken2.default }),
-													_react2.default.createElement(_reactRouter.Route, {
-																	path: 'reset-password',
-																	component: _ResetPassword2.default,
-																	onEnter: AuthMiddleware.notLoggedIn })
-									),
-									_react2.default.createElement(
-													_reactRouter.Route,
-													{ path: 'user', component: _Default2.default },
-													_react2.default.createElement(_reactRouter.Route, {
-																	path: 'dashboard',
-																	component: _dashboardPage2.default })
-									),
-									_react2.default.createElement(
-													_reactRouter.Route,
-													{ path: '/', component: _Public2.default },
-													_react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default })
-									)
-					)
+		_reactRedux.Provider,
+		{ store: _stores2.default },
+		_react2.default.createElement(
+			_reactRouter.Router,
+			{ history: history },
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: 'auth', component: _Auth2.default },
+				_react2.default.createElement(_reactRouter.Route, {
+					path: 'register',
+					component: _Register2.default,
+					onEnter: AuthMiddleware.notLoggedIn }),
+				_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default, onEnter: AuthMiddleware.notLoggedIn }),
+				_react2.default.createElement(_reactRouter.Route, { path: 'logout', component: _Logout2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: 'validate-token', component: _ValidateToken2.default }),
+				_react2.default.createElement(_reactRouter.Route, {
+					path: 'reset-password',
+					component: _ResetPassword2.default,
+					onEnter: AuthMiddleware.notLoggedIn })
+			),
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: 'user', component: _Default2.default },
+				_react2.default.createElement(_reactRouter.Route, {
+					path: 'dashboard',
+					component: _dashboardPage2.default })
+			),
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: '/', component: _Public2.default },
+				_react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default })
+			)
+		)
 	), document.getElementById('root'));
 
 /***/ },
@@ -70712,7 +70712,7 @@
 
 	var _reactRedux = __webpack_require__(241);
 
-	var _Header = __webpack_require__(543);
+	var _Header = __webpack_require__(542);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
@@ -70754,8 +70754,7 @@
 	exports.default = ConnectDefaultLayout;
 
 /***/ },
-/* 542 */,
-/* 543 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70917,7 +70916,7 @@
 	exports.default = ConnectWWWHeader;
 
 /***/ },
-/* 544 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70952,7 +70951,7 @@
 	exports.default = PublicPage;
 
 /***/ },
-/* 545 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70977,23 +70976,23 @@
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
-	var _organisation = __webpack_require__(546);
+	var _organisation = __webpack_require__(545);
 
 	var _organisation2 = _interopRequireDefault(_organisation);
 
-	var _technologies = __webpack_require__(547);
+	var _technologies = __webpack_require__(546);
 
 	var _technologies2 = _interopRequireDefault(_technologies);
 
-	var _courses = __webpack_require__(548);
+	var _courses = __webpack_require__(547);
 
 	var _courses2 = _interopRequireDefault(_courses);
 
-	var _memebers = __webpack_require__(549);
+	var _memebers = __webpack_require__(548);
 
 	var _memebers2 = _interopRequireDefault(_memebers);
 
-	var _workshop = __webpack_require__(550);
+	var _workshop = __webpack_require__(549);
 
 	var _workshop2 = _interopRequireDefault(_workshop);
 
@@ -71172,7 +71171,7 @@
 	exports.default = ConnectHome;
 
 /***/ },
-/* 546 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71302,7 +71301,7 @@
 	exports.default = organisationSection;
 
 /***/ },
-/* 547 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71421,7 +71420,7 @@
 	exports.default = technologiesSection;
 
 /***/ },
-/* 548 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71600,7 +71599,7 @@
 	exports.default = courseSection;
 
 /***/ },
-/* 549 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71753,7 +71752,7 @@
 	exports.default = memeberSection;
 
 /***/ },
-/* 550 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71863,7 +71862,7 @@
 	exports.default = workshopSection;
 
 /***/ },
-/* 551 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71891,7 +71890,6 @@
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  return {};
 	};
-
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {};
 	};
