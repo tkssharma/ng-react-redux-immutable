@@ -29,9 +29,8 @@ if (localStorage.token) {
 	store.dispatch(Action.authUpdateUserData(jwt.decode(localStorage.token)));
 }
 if (localStorage.geo) {
-	// let geo = JSON.parse(localStorage.geo);
-	// API.setGeoLocation(geo);
-	//	store.dispatch(Action.wwwSetGeo(geo));
+	// let geo = JSON.parse(localStorage.geo); API.setGeoLocation(geo);
+	// 	store.dispatch(Action.wwwSetGeo(geo));
 }
 
 //---------------Login pages -----------------------//
@@ -49,34 +48,39 @@ import PublicLayout from 'app/ui/layout/Public';
 import PublicIndexPage from 'app/components/home/index';
 //--------------------Dashboard------------------//
 import DefaultLayout from 'app/ui/layout/Default';
-import DashboardPage from 'app/components/dashboard/dashboardPage';
+import AdminDashBoardComponent from 'app/components/dashboard/dashboardPage';
+import AdminHomeComponent from 'app/components/dashboard/homePage';
+import AdminFormComponent from 'app/components/dashboard/formPage';
 
 render((
 	<Provider store={store}>
-	<Router history={history}>
-	<Route path="auth" component={AuthLayout}>
-	<Route
-	path="register"
-	component={RegisterPage}
-	onEnter={AuthMiddleware.notLoggedIn}/>
-	<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
-	<Route path="logout" component={LogoutPage}/>
-	<Route path="validate-token" component={ValidateTokenPage}/>
-	<Route
-	path="reset-password"
-	component={ResetPasswordPage}
-	onEnter={AuthMiddleware.notLoggedIn}/>
-	</Route>
+		<Router history={history}>
+			<Route path="auth" component={AuthLayout}>
+				<Route
+					path="register"
+					component={RegisterPage}
+					onEnter={AuthMiddleware.notLoggedIn}/>
+				<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
+				<Route path="logout" component={LogoutPage}/>
+				<Route path="validate-token" component={ValidateTokenPage}/>
+				<Route
+					path="reset-password"
+					component={ResetPasswordPage}
+					onEnter={AuthMiddleware.notLoggedIn}/>
+			</Route>
 
-	<Route path="user" component={DefaultLayout}>
-	<Route
-	path="dashboard"
-	component={DashboardPage}/>
-	</Route>
+			<Route path="/">
+				<IndexRoute to="home"/>
+				<Route component={AdminDashBoardComponent}>
+					<Route path="dashboard" component={AdminHomeComponent} onEnter={! AuthMiddleware.notLoggedIn} />
+					<Route path="form" component={AdminFormComponent} onEnter={! AuthMiddleware.notLoggedIn}/>
+				</Route>
+				<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
+			</Route>
 
-	<Route path="/" component={PublicLayout}>
-	<IndexRoute component={PublicIndexPage}/>
-	</Route>
-	</Router>
+			<Route path="/home" component={PublicLayout}>
+			 	<IndexRoute component={PublicIndexPage}/>
+			</Route>
+		</Router>
 	</Provider>
 ), document.getElementById('root'));

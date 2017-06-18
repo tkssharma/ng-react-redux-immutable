@@ -2,48 +2,64 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import * as DefaultAction from 'app/redux/actions';
 import { Link } from 'react-router';
 import { Spin } from 'antd';
+import {bindActionCreators} from 'redux';
+import {Layout, Affix , Row, Col} from 'antd';
+import NavPath from '../../components/NavPath'
+import CommonHeader from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
+import CommonFooter from '../../components/Footer';
+import * as Action from 'app/redux/actions';
+import Helper from 'app/global/helper';
+import './index.less';
 
-const mapStateToProps = ( state, ownProps ) => {
-	return {
-	}
+const { Content } = Layout;
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state
+    .auth
+    .get('user')
+  }
 }
 const mapDispatchToProps = dispatch => ({
+  //fetchProfile: () => dispatch(Action.fetchProfile()),
 });
 
-let dashboardPage = ( props ) => {
-	return (<div className="banner2">
-      <div className="bg-color">
-        <div className="container">
-          <div className="row">
-            <div className="banner-text text-center">
-            <div className="logo-holder">
-                <Link to="/auth/login"><img alt="Tech logo angular" src="../img/angular.svg"/></Link>
-                <Link to="/auth/login"><img alt="React" src="../img/react.svg"/></Link>
-                <Link to="/auth/login"><img alt="Js" src="../img/javascript.svg"/></Link>
-                <Link to="/auth/login"><img alt="Tech logo d3" src="../img/d3.svg"/></Link>
-                <Link to="/auth/login"><img alt="Es6" src="../img/jss.svg"/></Link>
-            </div>
-            <h1 className="mega title">GenNext Training to deliver project based
-                learning to give you the head start you need as a developer</h1>
+class AdminDashBoardComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-              <div className="intro-para text-center quote">
-                <Link to="/auth/dashboard/profile" className="btn-bg btn btn-spacing">Start Learning</Link>
-																<a href="#." className="btn-bg btn">Become Trainer</a>
+  componentWillMount() {
+  }
+  logout(){}
+  render() {
+    const {user} = this.props;
 
-              </div>
-            </div>
-          </div>
-        </div>
+    return (
+      <Layout className="ant-layout-has-sider">
+      <Sidebar />
+      <Layout>
+      <CommonHeader profile={user} />
+      <Content style={{ margin: '0 16px' }}>
+      <NavPath />
+      <div style={{ minHeight: 360 }}>
+      {this.props.children}
       </div>
-    </div>
-	)
+      </Content>
+      <CommonFooter />
+      </Layout>
+      </Layout>
+    );
+  }
 }
-const connectDashboardPage = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(dashboardPage)
 
-export default connectDashboardPage;
+AdminDashBoardComponent.propTypes = {
+  user: React.PropTypes.object,
+  children: React.PropTypes.node.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashBoardComponent);

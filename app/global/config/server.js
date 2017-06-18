@@ -3,6 +3,7 @@
 export default {
 	url: 'http://localhost:2233/',
 	register: 'auth/register',
+	adminMenu : 'users/api/menu',
 	login: 'auth/login',
 	validate_auth: 'auth/validate',
 	reset_password: 'auth/reset-password',
