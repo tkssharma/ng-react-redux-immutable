@@ -10,7 +10,6 @@ import {
 	browserHistory,
 	IndexRoute
 } from 'react-router';
-
 import {Provider} from 'react-redux';
 import store from 'app/redux/stores';
 import {syncHistoryWithStore} from 'react-router-redux'
