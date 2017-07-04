@@ -184,19 +184,15 @@
 			),
 			_react2.default.createElement(
 				_reactRouter.Route,
-				{ path: '/' },
-				_react2.default.createElement(_reactRouter.IndexRoute, { to: 'home' }),
-				_react2.default.createElement(
-					_reactRouter.Route,
-					{ component: _dashboardPage2.default },
-					_react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _homePage2.default, onEnter: !AuthMiddleware.notLoggedIn }),
-					_react2.default.createElement(_reactRouter.Route, { path: 'form', component: _formPage2.default, onEnter: !AuthMiddleware.notLoggedIn })
-				),
-				_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default, onEnter: AuthMiddleware.notLoggedIn })
+				{ path: '/admin', component: _dashboardPage2.default },
+				_react2.default.createElement(_reactRouter.IndexRoute, { component: _homePage2.default, onEnter: !AuthMiddleware.notLoggedIn }),
+				_react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _homePage2.default, onEnter: !AuthMiddleware.notLoggedIn }),
+				_react2.default.createElement(_reactRouter.Route, { path: 'form', component: _formPage2.default, onEnter: !AuthMiddleware.notLoggedIn })
 			),
+			_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default, onEnter: AuthMiddleware.notLoggedIn }),
 			_react2.default.createElement(
 				_reactRouter.Route,
-				{ path: '/home', component: _Public2.default },
+				{ path: '/', component: _Public2.default },
 				_react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default })
 			)
 		)

@@ -68,16 +68,14 @@ render((
 					onEnter={AuthMiddleware.notLoggedIn}/>
 			</Route>
 
-			<Route path="/">
-				<IndexRoute to="home"/>
-				<Route component={AdminDashBoardComponent}>
-					<Route path="dashboard" component={AdminHomeComponent} onEnter={! AuthMiddleware.notLoggedIn} />
+			<Route path="/admin"  component={AdminDashBoardComponent}>
+					<IndexRoute  component={AdminHomeComponent} onEnter={! AuthMiddleware.notLoggedIn}/>
 					<Route path="form" component={AdminFormComponent} onEnter={! AuthMiddleware.notLoggedIn}/>
 				</Route>
-				<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
-			</Route>
 
-			<Route path="/home" component={PublicLayout}>
+				<Route path="login" component={LoginPage} onEnter={AuthMiddleware.notLoggedIn}/>
+
+			<Route path="/" component={PublicLayout}>
 			 	<IndexRoute component={PublicIndexPage}/>
 			</Route>
 		</Router>
