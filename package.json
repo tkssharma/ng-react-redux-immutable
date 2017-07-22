@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "webpack -w  && npm run watch-css",
     "start": "webpack-dev-server --progress --inline",
-    "scss-compile": "node-sass  public/css/style.scss -o public/css/",
+    "scss-compile": "node-sass  public/css/main.scss -o public/css/",
     "watch-css": "nodemon -e scss -x \"npm run scss-compile\"",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",

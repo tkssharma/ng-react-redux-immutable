@@ -1,0 +1,41 @@
+
+        .ant-search-layout {
+        .ant-input {
+                position: relative;
+                display: inline-block;
+                padding: 30px 20px;
+                width: 100%;
+                height: 30px;
+                cursor: text;
+                font-size: 18px;
+                line-height: 1.5;
+                color: rgba(0, 0, 0, .65);
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #d9d9d9;
+                border-radius: 4px;
+                -webkit-transition: all .3s;
+                transition: all .3s;
+                border-top-left-radius: 0px !important;
+                border-bottom-left-radius: 0px !important;
+            }
+
+            .ant-calendar-picker-input {
+                border-top-left-radius: 0px !important;
+                border-bottom-left-radius: 0px !important;
+            }
+
+            .ant-btn {
+                padding: 17px 60px;
+                font-size: 18px;
+                height: inherit;
+                border-top-right-radius: 0px !important;
+                border-bottom-right-radius: 4px !important;
+            }
+
+            .ant-btn-primary {
+                color: #fff;
+                background-color: #5fcf80;
+                border-color: #5fcf80;
+            }
+        }
