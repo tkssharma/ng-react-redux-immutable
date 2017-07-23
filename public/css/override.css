@@ -276,7 +276,7 @@ h2{
  Organisations
 ************************************/
 #organisations{
-    background-color: rgb(247, 247, 247);
+       background-color: rgba(235, 230, 230, 0.74);
 }
 .orga-stru
 {
@@ -440,8 +440,16 @@ Course
     background-color: #5FCF80;
 }
 [class*=" imghvr-"], [class^="imghvr-"] {
-    background-color: #5FCF80;
     color: #fff;
+}
+.img-fix-height{
+    max-height: 150px;
+        margin: auto;
+}
+.display {
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 /***********************************
 Price Table

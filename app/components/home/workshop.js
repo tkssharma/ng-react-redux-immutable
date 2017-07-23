@@ -10,30 +10,30 @@ let workshopSection = ( <section id="work-shop" className="section-padding">
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-                <i className="fa fa-html5 color-green"></i>
+              <img src="img/01.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
-                <h4 className="ser-text">Mentor HTML5 Workshop</h4>
+                <h4 className="ser-text">Mentor AWS  Workshop</h4>
               </div>
             </div>
           </div>
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-                <i className="fa fa-css3 color-green"></i>
+              <img src="img/02.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
-                <h4 className="ser-text">Mentor CSS3 Workshop</h4>
+                <h4 className="ser-text">Docker Hackathon</h4>
               </div>
             </div>
           </div>
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-                <i className="fa fa-joomla color-green"></i>
+              <img src="img/03.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
-                <h4 className="ser-text">Mentor Joomla Workshop</h4>
+                <h4 className="ser-text">React/Redux</h4>
               </div>
             </div>
           </div>

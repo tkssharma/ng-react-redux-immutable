@@ -92844,7 +92844,7 @@
 	  ),
 	  _react2.default.createElement(
 	    "section",
-	    { id: "courses", className: "section-padding" },
+	    { id: "work-shop", className: "section-padding" },
 	    _react2.default.createElement(
 	      "div",
 	      { className: "container" },
@@ -92857,80 +92857,78 @@
 	          _react2.default.createElement(
 	            "h2",
 	            null,
-	            "Courses"
+	            "Upcoming Training"
 	          ),
 	          _react2.default.createElement(
 	            "p",
 	            null,
-	            "Lorem ipsum "
-	          )
-	        )
-	      )
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "container" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "row" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
-	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course01.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
+	            "Training"
 	          )
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          { className: "col-md-4 col-sm-6" },
 	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course02.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
+	            "div",
+	            { className: "service-box text-center" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-box" },
+	              _react2.default.createElement("img", { src: "img/03.png", className: "img-responsive img-fix-height" })
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-text" },
+	              _react2.default.createElement(
+	                "h4",
+	                { className: "ser-text" },
+	                "Online Training on React"
+	              )
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          { className: "col-md-4 col-sm-6" },
 	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course03.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
+	            "div",
+	            { className: "service-box text-center" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-box" },
+	              _react2.default.createElement("img", { src: "img/04.png", className: "img-responsive img-fix-height" })
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-text" },
+	              _react2.default.createElement(
+	                "h4",
+	                { className: "ser-text" },
+	                "Online Training on ES5/ES6"
+	              )
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
+	          { className: "col-md-4 col-sm-6" },
 	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course04.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
-	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course05.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "col-md-4 col-sm-6 padleft-right" },
-	          _react2.default.createElement(
-	            "figure",
-	            { className: "imghvr-fold-up" },
-	            _react2.default.createElement("img", { src: "img/course06.jpg", className: "img-responsive" }),
-	            _react2.default.createElement("a", { href: "#" })
+	            "div",
+	            { className: "service-box text-center" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-box" },
+	              _react2.default.createElement("img", { src: "img/05.png", className: "img-responsive img-fix-height" })
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "icon-text" },
+	              _react2.default.createElement(
+	                "h4",
+	                { className: "ser-text" },
+	                "Training on Ionic Platform"
+	              )
+	            )
 	          )
 	        )
 	      )
@@ -93141,7 +93139,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "icon-box" },
-	            _react2.default.createElement("i", { className: "fa fa-html5 color-green" })
+	            _react2.default.createElement("img", { src: "img/01.png", className: "img-responsive img-fix-height" })
 	          ),
 	          _react2.default.createElement(
 	            "div",
@@ -93149,7 +93147,7 @@
 	            _react2.default.createElement(
 	              "h4",
 	              { className: "ser-text" },
-	              "Mentor HTML5 Workshop"
+	              "Mentor AWS  Workshop"
 	            )
 	          )
 	        )
@@ -93163,7 +93161,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "icon-box" },
-	            _react2.default.createElement("i", { className: "fa fa-css3 color-green" })
+	            _react2.default.createElement("img", { src: "img/02.png", className: "img-responsive img-fix-height" })
 	          ),
 	          _react2.default.createElement(
 	            "div",
@@ -93171,7 +93169,7 @@
 	            _react2.default.createElement(
 	              "h4",
 	              { className: "ser-text" },
-	              "Mentor CSS3 Workshop"
+	              "Docker Hackathon"
 	            )
 	          )
 	        )
@@ -93185,7 +93183,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "icon-box" },
-	            _react2.default.createElement("i", { className: "fa fa-joomla color-green" })
+	            _react2.default.createElement("img", { src: "img/03.png", className: "img-responsive img-fix-height" })
 	          ),
 	          _react2.default.createElement(
 	            "div",
@@ -93193,7 +93191,7 @@
 	            _react2.default.createElement(
 	              "h4",
 	              { className: "ser-text" },
-	              "Mentor Joomla Workshop"
+	              "React/Redux"
 	            )
 	          )
 	        )
