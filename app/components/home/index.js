@@ -37,11 +37,11 @@ let Header_section = (
   <section className="hero ng-scope">
     <div className="container">
       <div className="logo-holder">
-        <Link to="/auth/login"><img alt="Tech logo angular" src="images/angular.svg"/></Link>
-        <Link to="/auth/login"><img alt="React" src="images/react.svg"/></Link>
-        <Link to="/auth/login"><img alt="Js" src="images/javascript.svg"/></Link>
-        <Link to="/auth/login"><img alt="Tech logo d3" src="images/d3.svg"/></Link>
-        <Link to="/auth/login"><img alt="Es6" src="images/jss.svg"/></Link>
+        <Link to="/auth/login"><img alt="Tech logo angular" src="public/img/angular.svg"/></Link>
+        <Link to="/auth/login"><img alt="React" src="public/img/react.svg"/></Link>
+        <Link to="/auth/login"><img alt="Js" src="public/img/javascript.svg"/></Link>
+        <Link to="/auth/login"><img alt="Tech logo d3" src="public/img/d3.svg"/></Link>
+        <Link to="/auth/login"><img alt="Es6" src="public/img/jss.svg"/></Link>
       </div>
       <h1 className="mega customtitle">GenNext Training to deliver project based
         learning to give you the head start you need as a developer</h1>
@@ -69,11 +69,11 @@ let banner_section = (
         <div className="row">
           <div className="banner-text text-center">
             <div className="logo-holder">
-              <Link to="/auth/login"><img alt="Tech logo angular" src="img/angular.svg"/></Link>
-              <Link to="/auth/login"><img alt="React" src="img/react.svg"/></Link>
-              <Link to="/auth/login"><img alt="Js" src="img/javascript.svg"/></Link>
-              <Link to="/auth/login"><img alt="Tech logo d3" src="img/d3.svg"/></Link>
-              <Link to="/auth/login"><img alt="Es6" src="img/jss.svg"/></Link>
+              <Link to="/auth/login"><img alt="Tech logo angular" src="public/img/angular.svg"/></Link>
+              <Link to="/auth/login"><img alt="React" src="public/img/react.svg"/></Link>
+              <Link to="/auth/login"><img alt="Js" src="public/img/javascript.svg"/></Link>
+              <Link to="/auth/login"><img alt="Tech logo d3" src="public/img/d3.svg"/></Link>
+              <Link to="/auth/login"><img alt="Es6" src="public/img/jss.svg"/></Link>
             </div>
             <h1 className="mega customtitle">GenNext Training to deliver project based
               learning to give you the head start you need as a developer</h1>

@@ -7,6 +7,7 @@
 		Redirect,
 		Route,
 		Link,
+		hashHistory,
 		browserHistory,
 		IndexRoute
 	} from 'react-router';
@@ -21,16 +22,6 @@
 	const history = syncHistoryWithStore(browserHistory, store);
 
 	import * as Action from 'app/redux/actions';
-	import jwt from 'jsonwebtoken';
-
-	if (localStorage.token) {
-		API.setAuthToken(localStorage.token);
-		store.dispatch(Action.authUpdateUserData(jwt.decode(localStorage.token)));
-	}
-	if (localStorage.geo) {
-		// let geo = JSON.parse(localStorage.geo); API.setGeoLocation(geo);
-		// 	store.dispatch(Action.wwwSetGeo(geo));
-	}
 
 	//---------------Login pages -----------------------//
 	import RegisterPage from 'app/ui/auth/Register';
@@ -53,7 +44,7 @@
 
 	render((
 		<Provider store={store}>
-			<Router history={history}>
+			<Router history={hashHistory}>
 				<Route path="auth" component={AuthLayout}>
 					<Route
 						path="register"
@@ -88,4 +79,4 @@
 
 			</Router>
 		</Provider>
-	), document.getElementById('root'));
+	), document.getElementById("app"));

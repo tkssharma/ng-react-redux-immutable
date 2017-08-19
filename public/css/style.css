@@ -1,14 +1,5 @@
     @charset "UTF-8";
-    /**
-    * Mixins File
-    */
 
-    html,
-    body {
-      font-weight: 400;
-      font-family: "Roboto Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      height: 100%;
-    }
     #root {
         height: 100%;
     }
@@ -766,12 +757,6 @@
     /**
     * Typography
     */
-
-    .heading {
-        margin: 40px 0;
-        font-family: "Segoe UI", "Open Sans", Tahoma, Arial, sans-serif;
-    }
-
     .heading h1 {
         font-size: 32px;
         line-height: 32px;
@@ -789,7 +774,7 @@
 
     .heading p {
         color: #555;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 24px;
     }
 
@@ -2564,26 +2549,6 @@
     /*************header and body landing page************/
     /************************************************/
 
-    body {
-        font-family: "Roboto Light", sans-serif;
-        font-size: 14px;
-        line-height: 1.43;
-        color: #565a5c;
-        background-color: #ffffff;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-        font-family: Roboto Light;
-    }
-
     section {
         padding-bottom: 10px;
     }
@@ -3678,16 +3643,6 @@
     .icon-google-plus:before {
         content: "";
     }
-
-    body {
-        font-family: "Roboto Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 20px;
-        line-height: 22px;
-        font-weight: 400;
-        color: #555;
-        -webkit-font-smoothing: antialiased;
-    }
-
     @media only screen and (max-width: 1199px) {
         body {
             font-size: 18px;

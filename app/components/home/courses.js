@@ -34,7 +34,7 @@ let courseSection = (<div>
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/03.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/03.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">Online Training on React</h4>
@@ -44,7 +44,7 @@ let courseSection = (<div>
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/04.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/04.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">Online Training on ES5/ES6</h4>
@@ -54,7 +54,7 @@ let courseSection = (<div>
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/05.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/05.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">Training on Ionic Platform</h4>

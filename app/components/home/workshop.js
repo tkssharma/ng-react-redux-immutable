@@ -10,7 +10,7 @@ let workshopSection = ( <section id="work-shop" className="section-padding">
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/01.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/01.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">Mentor AWS  Workshop</h4>
@@ -20,7 +20,7 @@ let workshopSection = ( <section id="work-shop" className="section-padding">
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/02.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/02.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">Docker Hackathon</h4>
@@ -30,7 +30,7 @@ let workshopSection = ( <section id="work-shop" className="section-padding">
           <div className="col-md-4 col-sm-6">
             <div className="service-box text-center">
               <div className="icon-box">
-              <img src="img/03.png" className="img-responsive img-fix-height"/>
+              <img src="public/img/03.png" className="img-responsive img-fix-height"/>
               </div>
               <div className="icon-text">
                 <h4 className="ser-text">React/Redux</h4>
