@@ -1,11 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Spin } from 'antd';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import {Spin} from 'antd';
 import {bindActionCreators} from 'redux';
-import {Layout, Affix , Row, Col} from 'antd';
+import {Layout, Affix, Row, Col} from 'antd';
 import NavPath from '../../components/NavPath'
 import CommonHeader from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
@@ -14,14 +14,12 @@ import * as Action from 'app/redux/actions';
 import Helper from 'app/global/helper';
 import './index.less';
 
-const { Content } = Layout;
-
-
+const {Content} = Layout;
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state
-    .auth
-    .get('user')
+      .auth
+      .get('user')
   }
 }
 const mapDispatchToProps = dispatch => ({
@@ -33,25 +31,28 @@ class AdminDashBoardComponent extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-  }
-  logout(){}
+  componentWillMount() {}
+  logout() {}
   render() {
     const {user} = this.props;
 
     return (
       <Layout className="ant-layout-has-sider">
-      <Sidebar />
-      <Layout>
-      <CommonHeader profile={user} />
-      <Content style={{ margin: '0 16px' }}>
-      <NavPath />
-      <div style={{ minHeight: 360 }}>
-      {this.props.children}
-      </div>
-      </Content>
-      <CommonFooter />
-      </Layout>
+        <Sidebar/>
+        <Layout>
+          <CommonHeader profile={user}/>
+          <Content style={{
+            margin: '0 16px'
+          }}>
+            <NavPath/>
+            <div style={{
+              minHeight: 360
+            }}>
+              {this.props.children}
+            </div>
+          </Content>
+          <CommonFooter/>
+        </Layout>
       </Layout>
     );
   }
