@@ -7,19 +7,19 @@ html, body {
 .auth-container {
   background-size: cover; }
   .auth-container.default {
-    background: url("../images/background/1.jpg") no-repeat center center;
+    background: url("public/img/background/1.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.royal {
-    background: url("../images/background/2.jpg") no-repeat center center;
+    background: url("public/img/background/2.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.kitchen {
-    background: url("../images/background/3.jpg") no-repeat center center;
+    background: url("public/img/background/3.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.veggie {
-    background: url("../images/background/4.jpg") no-repeat center center;
+    background: url("public/img/background/4.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.chicken {
-    background: url("../images/background/5.jpg") no-repeat center center;
+    background: url("public/img/background/5.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container .authlogo {
     max-width: 300px;
@@ -115,7 +115,7 @@ html, body {
   font-size: 18px;
   height: inherit;
   border-top-right-radius: 0px !important;
-  border-bottom-right-radius: 4px !important; }
+  border-bottom-right-radius: 0px !important; }
 
 .ant-search-layout .ant-btn-primary {
   color: #fff;

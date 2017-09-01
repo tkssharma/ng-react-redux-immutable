@@ -13,7 +13,7 @@ let organisationSection = (
             <div>
               <div className="heading ">
                 <div className="fea-img ">
-                  <i className="fa fa-css3"></i>
+                  <i className="fa fa-code"></i>
                 </div>
                 <h4>Latest Technologies</h4>
                 <p>Donec et lectus bibendum dolor dictum auctor in ac erat. Vestibulum egestas
@@ -26,7 +26,7 @@ let organisationSection = (
             <div>
               <div className="heading">
                 <div className="fea-img ">
-                  <i className="fa fa-drupal"></i>
+                  <i className="fa fa-file-code-o"></i>
                 </div>
 
                 <h4>Toons Background</h4>
