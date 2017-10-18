@@ -2,6 +2,8 @@
 
 	import React from 'react';
 	import {render} from 'react-dom';
+  import asyncComponent from './AsyncComponent'
+
 	import {
 		Router,
 		Redirect,
@@ -22,6 +24,17 @@
 	const history = syncHistoryWithStore(browserHistory, store);
 
 	import * as Action from 'app/redux/actions';
+
+	/*const RegisterPage = asyncComponent(() =>
+	    import('app/ui/auth/Register').then(module => module.default)
+	)
+
+	const LoginPage = asyncComponent(() =>
+	    import('app/ui/auth/Login').then(module => module.default)
+	) */
+
+	
+
 
 	//---------------Login pages -----------------------//
 	import RegisterPage from 'app/ui/auth/Register';
