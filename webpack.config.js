@@ -87,11 +87,23 @@ var config = {
                'style-loader', 'css-loader', 'less-loader?{"sourceMap":true}'
             ],
             include: __dirname
-         }, {
-            test: /\.(png|jpg|ttf|eot)$/,
-            exclude: /node_modules/,
-            loader: 'url-loader?limit=10000'
          },
+         {
+            test: /\.woff2?$|\.ttf$|\.eot$/,
+            loader: 'file-loader',
+            options: {
+                name: 'public/fonts/[name].[ext]',
+                publicPath: '../'
+            }
+          },
+          {
+            test: /\.png|\.jpe?g|\.gif$/,
+            loader: 'file-loader',
+            options: {
+                name: 'public/img/[name].[ext]',
+                publicPath: '../'
+            }
+          },
          {
             test: /\.json$/,
             loader: 'json',

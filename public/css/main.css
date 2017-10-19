@@ -7,19 +7,19 @@ html, body {
 .auth-container {
   background-size: cover; }
   .auth-container.default {
-    background: url("public/img/background/1.jpg") no-repeat center center;
+    background: url("../img/bg/01.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.royal {
-    background: url("public/img/background/2.jpg") no-repeat center center;
+    background: url("../img/bg/02.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.kitchen {
-    background: url("public/img/background/3.jpg") no-repeat center center;
+    background: url("../img/bg/03.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.veggie {
-    background: url("public/img/background/4.jpg") no-repeat center center;
+    background: url("../img/bg/04.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container.chicken {
-    background: url("public/img/background/5.jpg") no-repeat center center;
+    background: url("../img/bg/05.jpg") no-repeat center center;
     background-size: cover; }
   .auth-container .authlogo {
     max-width: 300px;
