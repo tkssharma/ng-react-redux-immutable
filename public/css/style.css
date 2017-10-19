@@ -3042,13 +3042,6 @@ li a:hover {
     color: #ffffff;
 }
 
-@font-face {
-    font-family: FontAwesome;
-    src: url(../fonts/fontawesome-webfont.eot);
-    src: url(../fonts/fontawesome-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/fontawesome-webfont.woff) format("woff");
-    font-weight: 400;
-    font-style: normal;
-}
 
 body {
     margin: 0;

@@ -8,13 +8,13 @@
     "scss-compile": "node-sass  public/css/main.scss -o public/css/",
     "watch-css": "nodemon -e scss -x \"npm run scss-compile\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js  --hot --inline",
+    "build": "NODE_ENV=production webpack --config ./webpack.config.js  --hot --inline",
     "start": "webpack-dev-server --config ./webpack.config.js  --hot --inline"
   },
   "author": "TarunSharma",
   "license": "MIT",
   "devDependencies": {
-     "babel": "6.5.2",
+    "babel": "6.5.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "6.2.5",
     "babel-plugin-antd": "0.5.1",
@@ -34,9 +34,12 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "antd": "^2.8.0",
+    "axios": "^0.15.3",
     "babel-core": "^6.22.1",
     "css-loader": "^0.15.5",
     "email-templates": "2.5.2",
+    "express": "4.13.4",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.10.1",
     "history": "4.2.0",
@@ -47,20 +50,19 @@
     "less": "^2.5.1",
     "less-loader": "^2.2.3",
     "node-sass": "^3.2.0",
+    "react": "^15.3.0",
     "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.3.0",
     "react-markdown": "2.4.2",
+    "react-redux": "^4.4.0",
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
+    "redux": "^3.6.0",
+    "body-parser": "^1.18.2",
+    "redux-thunk": "^2.1.0",
     "sass-loader": "^1.0.2",
     "scss-compile": "^0.1.7",
     "style-loader": "^0.12.3",
-    "url-loader": "^0.5.8",
-    "antd": "^2.8.0",
-    "axios": "^0.15.3",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-redux": "^4.4.0",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "url-loader": "^0.5.8"
   }
 }

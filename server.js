@@ -3,12 +3,12 @@ const express = require('express')
 const app = express();
 
 
-const indexPath = path.join(__dirname, './public/index.html')
+const indexPath = path.join(__dirname, './index.html')
 const publicPath = express.static(path.join(__dirname, './public'))
 
 app.use('/public', publicPath)
 
-app.get('*', function (req, res) { res.sendFile(indexPath) });
+app.get('/', function (req, res) { res.sendFile(indexPath) });
 const port = (process.env.PORT || 8082);
 
 app.listen(port)
