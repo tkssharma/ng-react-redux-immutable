@@ -38,6 +38,7 @@
     "antd": "^2.8.0",
     "axios": "^0.15.3",
     "babel-core": "^6.22.1",
+    "body-parser": "^1.18.2",
     "css-loader": "^0.15.5",
     "email-templates": "2.5.2",
     "express": "4.13.4",
@@ -59,11 +60,11 @@
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
     "redux": "^3.6.0",
-    "body-parser": "^1.18.2",
     "redux-thunk": "^2.1.0",
     "sass-loader": "^1.0.2",
     "scss-compile": "^0.1.7",
     "style-loader": "^0.12.3",
-    "url-loader": "^0.5.8"
+    "url-loader": "^0.5.8",
+    "webpack-bundle-analyzer": "^2.9.0"
   }
 }

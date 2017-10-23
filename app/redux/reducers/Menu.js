@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import {find} from 'lodash';
 
 import {
 				ADMIN_GET_ALL_MENU,
@@ -21,7 +21,7 @@ export default function menu(state = initialState, action = {}) {
         action.payload.data.reverse().map((item)=>{
           if(item.indexOf('sub') != -1){
             tmpKey = item.replace('sub', '');
-            tmpOb = _.find(state.items, function(o) {
+            tmpOb = find(state.items, function(o) {
               return o.key == tmpKey;
             });
             child = tmpOb.child;
@@ -33,7 +33,7 @@ export default function menu(state = initialState, action = {}) {
           if(item.indexOf('menu') != -1){
             tmpKey = item.replace('menu', '');
             if(child){
-              tmpOb = _.find(child, function(o) {
+              tmpOb = find(child, function(o) {
                 return o.key == tmpKey;
               });
             }

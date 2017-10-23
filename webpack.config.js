@@ -1,11 +1,12 @@
 
 var webpack = require('webpack');
 var path = require('path');
-
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var BUILD_DIR = path.resolve(__dirname, 'public/scripts');
 var APP_DIR = path.resolve(__dirname, 'app');
 
 var config = {
+    devtool: 'cheap-module-source-map',
      entry: {
    app: [path.join(__dirname, 'app/app.js')],
    vendor: [
@@ -54,12 +55,14 @@ var config = {
       new webpack
       .optimize
       .DedupePlugin(), //dedupe similar code
+      new BundleAnalyzerPlugin(),
       new webpack
       .optimize
       .AggressiveMergingPlugin(), //Merge chunks
       new webpack
       .optimize
-      .CommonsChunkPlugin('vendor', 'vendor.bundle.js')
+      .CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+      new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/])
    ],
 
    module: {
